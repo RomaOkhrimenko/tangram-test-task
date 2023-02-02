@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  outline: 0;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  outline: 0;
+  cursor: pointer;
+}
+
+input, textarea {
+  outline: 0;
+  -webkit-appearance: none;
+}
+
+button, img, label, a {
+  user-select: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img, picture, svg {
+  display: block;
+}
