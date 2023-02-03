@@ -1,18 +1,24 @@
 <template>
   <section class="container chat-page">
-    <ChatMenu />
+    <ChatNavigation />
     <Chat/>
     <ChatCatalog />
+<!--    <NewGroup />-->
+<!--    <Contacts />-->
+<!--  <Parameters />-->
   </section>
 </template>
 
 <script lang="js">
-import ChatMenu from "~/components/templates/section/chat/chat-menu/ChatMenu.vue";
-import Chat from "~/components/templates/section/chat/chat/Chat.vue";
-import ChatCatalog from "~/components/templates/section/chat/chat-catalog/ChatCatalog.vue";
+import Chat from "~/components/templates/chat-page/chat/Chat.vue";
+import ChatCatalog from "~/components/templates/chat-page/chat-catalog/ChatCatalog.vue";
+import ChatNavigation from "@/components/templates/chat-page/chat-navigation/ChatNavigation.vue";
+import NewGroup from "@/components/templates/chat-page/new-group/NewGroup.vue";
+import Contacts from "@/components/templates/chat-page/contacts/Contacts.vue";
+import Parameters from "@/components/templates/chat-page/parameters/Parameters.vue";
 
 export default {
-  components: {ChatCatalog, Chat, ChatMenu}
+  components: {Parameters, Contacts, NewGroup, ChatNavigation, ChatCatalog, Chat}
 }
 </script>
 
@@ -20,5 +26,6 @@ export default {
 .chat-page {
   display: flex;
   justify-content: space-between;
+  height: 100vh;
 }
 </style>
