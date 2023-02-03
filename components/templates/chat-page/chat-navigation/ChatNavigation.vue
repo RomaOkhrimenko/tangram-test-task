@@ -40,6 +40,11 @@ export default {
 <style lang="scss" scoped>
 .chat-navigation {
   max-width: 384px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 
   &.active {
     width: 100%;

@@ -26,6 +26,6 @@ export default {
 .chat-page {
   display: flex;
   justify-content: space-between;
-  height: 100vh;
+  height: calc(100vh - 112px);
 }
 </style>

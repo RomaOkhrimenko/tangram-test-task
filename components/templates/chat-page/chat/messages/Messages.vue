@@ -13,7 +13,7 @@ export default {
 <style lang="scss" scoped>
   .messages {
     display: flex;
-    flex: 1;
     overflow: auto;
+    height: 100%;
   }
 </style>

@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div class="contacts">
     <ContactsHeader />
-    <ContactsGroup />
+    <ContactsGroup title="Private Gruppen" />
+    <ContactsGroup title="Persönlicher Chat" />
   </div>
 </template>
 

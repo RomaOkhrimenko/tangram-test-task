@@ -96,9 +96,9 @@ export default {
 
 <style lang="scss" scoped>
 .message-input {
-
   max-width: 992px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0 auto 3.2rem auto;
 
   &-container {
     margin: 0 1.5rem;
