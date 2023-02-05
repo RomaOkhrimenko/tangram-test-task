@@ -1,17 +1,21 @@
 <template>
   <div class="chat-navigation active">
-    <ChatMenu v-if="isShowMenu" @changeTab="changeTab" @handleShowMenu="handleShowMenu" :currentTab="tab" />
+    <ChatMenu
+      v-if="isShowMenu"
+      @changeTab="changeTab"
+      @handleShowMenu="handleShowMenu"
+      :currentTab="tab"
+    />
     <Contacts v-if="!isShowMenu" @handleShowMenu="handleShowMenu" />
-
   </div>
 </template>
 
 <script>
-import ChatMenu from "@/components/templates/chat-page/chat-navigation/chat-menu/ChatMenu.vue";
-import Contacts from "@/components/templates/chat-page/chat-navigation/contacts/Contacts.vue";
+import ChatMenu from '@/components/templates/chat-page/chat-navigation/chat-menu/ChatMenu.vue'
+import Contacts from '@/components/templates/chat-page/chat-navigation/contacts/Contacts.vue'
 
 export default {
-  components: {Contacts, ChatMenu},
+  components: { Contacts, ChatMenu },
 
   data() {
     return {
@@ -23,7 +27,7 @@ export default {
   methods: {
     changeTab(tab) {
       this.tab = tab
-      if(this.tab === 'chat') {
+      if (this.tab === 'chat') {
         this.isShowMenu = false
       }
     },
@@ -32,7 +36,7 @@ export default {
       console.log('handleShowMenu', status)
       this.isShowMenu = status
       this.tab = 'chat'
-    },
+    }
   }
 }
 </script>
@@ -40,8 +44,6 @@ export default {
 <style lang="scss" scoped>
 .chat-navigation {
   max-width: 384px;
-  overflow: auto;
-
   &::-webkit-scrollbar {
     width: 0;
   }

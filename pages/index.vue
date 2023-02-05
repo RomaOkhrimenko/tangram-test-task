@@ -1,11 +1,11 @@
 <template>
   <section class="container chat-page">
     <ChatNavigation />
-    <Chat/>
+    <Chat />
     <ChatCatalog />
-<!--    <NewGroup />-->
-<!--    <Contacts />-->
-<!--  <Parameters />-->
+    <!--    <NewGroup />-->
+    <!--    <Contacts />-->
+    <!--  <Parameters />-->
   </section>
 </template>
 
@@ -25,7 +25,6 @@ export default {
 <style lang="scss" scoped>
 .chat-page {
   display: flex;
-  justify-content: space-between;
   height: calc(100vh - 112px);
 }
 </style>

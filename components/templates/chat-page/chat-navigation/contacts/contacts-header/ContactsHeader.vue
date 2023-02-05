@@ -8,14 +8,7 @@
       </div>
       <div>
         <button @click="handleShowMenu" class="contacts-header-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <g id="menu" transform="translate(-684 -380)">
-              <path id="Vector" d="M0,0H18" transform="translate(687 387)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"/>
-              <path id="Vector-2" data-name="Vector" d="M0,0H18" transform="translate(687 392)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"/>
-              <path id="Vector-3" data-name="Vector" d="M0,0H18" transform="translate(687 397)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"/>
-              <path id="Vector-4" data-name="Vector" d="M0,0H24V24H0Z" transform="translate(684 380)" fill="none" opacity="0"/>
-            </g>
-          </svg>
+          <BurgerMenuSvg />
         </button>
       </div>
     </div>
@@ -26,17 +19,17 @@
 </template>
 
 <script>
-import ContactsInput from "@/components/templates/chat-page/chat-navigation/contacts/contacts-header/ContactsInput.vue";
-
+import ContactsInput from '@/components/templates/chat-page/chat-navigation/contacts/contacts-header/ContactsInput.vue'
+import { BurgerMenuSvg } from '~/assets/images/svg'
 export default {
-  components: {ContactsInput},
+  components: { ContactsInput, BurgerMenuSvg },
 
   methods: {
     handleShowMenu() {
       console.log('click')
       this.$emit('handleShowMenu', true)
-    },
-  },
+    }
+  }
 }
 </script>
 
@@ -65,7 +58,6 @@ export default {
       line-height: 32px;
       border: none;
 
-
       &.active {
         font-size: 2rem;
         font-weight: 700;
@@ -76,7 +68,7 @@ export default {
 
   &-btn {
     padding: 0.8rem;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border-radius: 8px;
     cursor: pointer;
     border: none;

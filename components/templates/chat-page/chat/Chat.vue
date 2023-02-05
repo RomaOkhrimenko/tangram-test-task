@@ -1,19 +1,18 @@
 <template>
   <div class="chat">
     <ChatHeader />
-      <Messages />
-      <MessageInput />
+    <Messages />
+    <MessageInput />
   </div>
 </template>
 
 <script>
-import ChatHeader from "@/components/templates/chat-page/chat/chat-header/ChatHeader.vue";
-import Messages from "@/components/templates/chat-page/chat/messages/Messages.vue";
-import MessageInput from "@/components/templates/chat-page/chat/message-input/MessageInput.vue";
+import ChatHeader from '@/components/templates/chat-page/chat/chat-header/ChatHeader.vue'
+import Messages from '@/components/templates/chat-page/chat/messages/Messages.vue'
+import MessageInput from '@/components/templates/chat-page/chat/message-input/MessageInput.vue'
 
 export default {
-  components: {MessageInput, Messages, ChatHeader}
-
+  components: { MessageInput, Messages, ChatHeader }
 }
 </script>
 

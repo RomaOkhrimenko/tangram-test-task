@@ -1,8 +1,31 @@
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<svg
+  id="Layer_2"
+  data-name="Layer 2"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+>
   <g id="invisible_box" data-name="invisible box">
-    <rect id="Прямоугольник_393" data-name="Прямоугольник 393" width="24" height="24" fill="none"/>
+    <rect
+      id="Прямоугольник_393"
+      data-name="Прямоугольник 393"
+      width="24"
+      height="24"
+      fill="none"
+    />
   </g>
-  <g id="icons_Q2"  data-name="icons Q2" transform="translate(3.5 3.5)">
-    <path id="Контур_2937" data-name="Контур 2937" stroke="currentColor" d="M23,14.5H16.5V8a1,1,0,0,0-2,0v6.5H8a1,1,0,0,0,0,2h6.5V23a1,1,0,0,0,2,0V16.5H23a1,1,0,0,0,0-2Z" transform="translate(-7 -7)" fill="currentColor"/>
+  <g
+    id="icons_Q2"
+    data-name="icons Q2"
+    transform="translate(3.5 3.5)"
+  >
+    <path
+      id="Контур_2937"
+      data-name="Контур 2937"
+      d="M23,14.5H16.5V8a1,1,0,0,0-2,0v6.5H8a1,1,0,0,0,0,2h6.5V23a1,1,0,0,0,2,0V16.5H23a1,1,0,0,0,0-2Z"
+      transform="translate(-7 -7)"
+      fill="currentColor"
+    />
   </g>
 </svg>
