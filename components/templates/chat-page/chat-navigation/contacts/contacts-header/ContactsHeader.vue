@@ -2,9 +2,19 @@
   <div class="contacts-header">
     <div class="contacts-header-top">
       <div class="contacts-header-category">
-        <button class="active">Chat</button>
+        <button
+          @click="handleTab('chat')"
+          :class="currentTab === 'chat' ? 'active' : ''"
+        >
+          Chat
+        </button>
         <div class="contacts-header-category__line" />
-        <button>Kontakte</button>
+        <button
+          @click="handleTab('contacts')"
+          :class="currentTab === 'contacts' ? 'active' : ''"
+        >
+          Kontakte
+        </button>
       </div>
       <div>
         <button @click="handleShowMenu" class="contacts-header-btn">
@@ -24,10 +34,21 @@ import { BurgerMenuSvg } from '~/assets/images/svg'
 export default {
   components: { ContactsInput, BurgerMenuSvg },
 
+  props: {
+    currentTab: {
+      type: String,
+      required: true
+    }
+  },
+
   methods: {
     handleShowMenu() {
       console.log('click')
       this.$emit('handleShowMenu', true)
+    },
+
+    handleTab(tab) {
+      this.$emit('handleTab', tab)
     }
   }
 }
@@ -57,11 +78,14 @@ export default {
       font-size: 1.3rem;
       line-height: 32px;
       border: none;
+      margin-top: auto;
+      transition: margin-top 0.3s, font-size 0.3s;
 
       &.active {
         font-size: 2rem;
         font-weight: 700;
         line-height: 32px;
+        margin-top: 0;
       }
     }
   }

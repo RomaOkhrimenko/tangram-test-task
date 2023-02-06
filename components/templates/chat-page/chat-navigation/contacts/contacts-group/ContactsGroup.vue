@@ -1,7 +1,7 @@
 <template>
   <div class="contacts-group">
     <div class="contacts-group__title">
-      <h3>{{title}}</h3>
+      <h3>{{ title }}</h3>
     </div>
 
     <div class="contacts-group__container">
@@ -14,10 +14,10 @@
 </template>
 
 <script>
-import GroupBlock from "@/components/templates/chat-page/chat-navigation/contacts/blocks/GroupBlock.vue";
+import GroupBlock from '@/components/templates/chat-page/chat-navigation/contacts/blocks/GroupBlock.vue'
 
 export default {
-  components: {GroupBlock},
+  components: { GroupBlock },
   props: {
     title: {
       type: String,
@@ -29,10 +29,9 @@ export default {
 
 <style lang="scss" scoped>
 .contacts-group {
-  padding: 0 2.4rem;
   margin-bottom: 3.2rem;
   &__title {
-    border-bottom: 1px solid #D9D9D9;
+    border-bottom: 1px solid #d9d9d9;
     padding-bottom: 0.8rem;
     margin-bottom: 1.6rem;
     h3 {

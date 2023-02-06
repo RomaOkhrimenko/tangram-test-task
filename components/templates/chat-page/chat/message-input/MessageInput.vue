@@ -69,12 +69,11 @@ export default {
 
 <style lang="scss" scoped>
 .message-input {
-  max-width: 992px;
   width: 100%;
   margin: 0 auto 3.2rem auto;
 
   &-container {
-    margin: 0 1.5rem;
+    margin: 0 3.2rem;
     background-color: #fff;
     box-shadow: 0px 8px 16px #11111129;
     border-radius: 20px;

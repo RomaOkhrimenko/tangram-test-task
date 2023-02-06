@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="note_lock" transform="translate(-428 -252)">
+    <path id="Vector" d="M16,4v9.75c0,3-1.79,4-4,4H4c-2.21,0-4-1-4-4V4C0,.75,1.79,0,4,0a2.237,2.237,0,0,0,.66,1.59,2.237,2.237,0,0,0,1.59.66h3.5A2.253,2.253,0,0,0,12,0C14.21,0,16,.75,16,4Z" transform="translate(432 256.25)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Vector-2" data-name="Vector" d="M8,2.25A2.253,2.253,0,0,1,5.75,4.5H2.25a2.25,2.25,0,0,1,0-4.5h3.5A2.253,2.253,0,0,1,8,2.25Z" transform="translate(436 254)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Vector-3" data-name="Vector" d="M0,0H24V24H0Z" transform="translate(428 252)" fill="none" opacity="0"/>
+    <g id="Сгруппировать_4666" data-name="Сгруппировать 4666" transform="translate(-1 -1.111)">
+      <path id="Vector-4" data-name="Vector" d="M0,3V2.25C0,1.009.417,0,2.5,0S5,1.009,5,2.25V3" transform="translate(438.5 263.111)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-5" data-name="Vector" d="M2,1A1,1,0,1,1,1,0,1,1,0,0,1,2,1Z" transform="translate(439.999 267.611)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path id="Vector-6" data-name="Vector" d="M6,5H2C.4,5,0,4.583,0,2.917V2.083C0,.417.4,0,2,0H6C7.6,0,8,.417,8,2.083v.833C8,4.583,7.6,5,6,5Z" transform="translate(437 266.111)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>

@@ -13,6 +13,11 @@ import ThreeVerticalDotSvg from './three-vertical-dot.svg?inline'
 import UnlockSvg from './unlock.svg?inline'
 import SearchSvg from './search.svg?inline'
 import BurgerMenuSvg from './burger-menu.svg?inline'
+import CategorySvg from './category.svg?inline'
+import FolderOpenSvg from './folder-open.svg?inline'
+import NoteLockSvg from './note_lock.svg?inline'
+import ArrowRightSvg from './arrow-right.svg?inline'
+import ArrowDownFillSvg from './arrow-down-fill.svg?inline'
 
 export {
   CloseSvg,
@@ -29,5 +34,10 @@ export {
   ThreeVerticalDotSvg,
   UnlockSvg,
   SearchSvg,
-  BurgerMenuSvg
+  BurgerMenuSvg,
+  CategorySvg,
+  FolderOpenSvg,
+  NoteLockSvg,
+  ArrowRightSvg,
+  ArrowDownFillSvg
 }
