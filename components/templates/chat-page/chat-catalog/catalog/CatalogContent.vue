@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       option: 'Auftragnehmer',
-      isShowFilter: Boolean
+      isShowFilter: false
     }
   },
   methods: {

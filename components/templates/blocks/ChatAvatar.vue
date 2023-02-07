@@ -1,6 +1,6 @@
 <template>
   <div class="chat-avatar">
-    <img src="~/assets/images/png/avatar.png" alt="User">
+    <img src="~/assets/images/png/avatar.png" alt="User" />
 
     <div class="chat-avatar__status">
       <div v-if="status === 'online'" class="chat-avatar__status-online" />
@@ -60,21 +60,23 @@ export default {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background-color: #FDFDFD;
+    background-color: #fdfdfd;
 
     &-online {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #007B29;
+      background: #007b29;
     }
 
     &-offline {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #D9D9D9;
+      background: #d9d9d9;
     }
   }
 }
 </style>
+
+function increment() { setState((prev) => prev + 1)) setState(state) }

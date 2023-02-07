@@ -61,7 +61,7 @@ export default {
 .chat-catalog {
   max-width: 72px;
   padding: 1.6rem;
-  transition: max-width 0.3s;
+  transition: max-width 0.5s;
   width: 100%;
   &.active {
     max-width: 384px;

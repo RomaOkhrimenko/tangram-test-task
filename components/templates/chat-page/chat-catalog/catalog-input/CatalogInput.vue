@@ -10,7 +10,13 @@
       >
       <ArrowRightSvg />
     </div>
-    <div v-if="isOpen" class="catalog-input-dropdown"></div>
+    <div
+      v-if="!isInformation"
+      class="catalog-input-dropdown"
+      :class="`${isOpen ? 'open' : ''}`"
+    >
+      <img src="~/assets/images/jpg/kitchen.jpg" alt="" />
+    </div>
   </div>
 </template>
 
@@ -42,6 +48,7 @@ export default {
 
   methods: {
     handleOpenInput(status) {
+      if (this.isInformation) return
       this.isOpen = status
     }
   }
@@ -97,8 +104,15 @@ export default {
 
   &-dropdown {
     width: 100%;
-    height: 100px;
+    max-height: 0;
     background-color: #fff;
+    transition: max-height 0.5s;
+    overflow: hidden;
+
+    &.open {
+      max-height: 1000px;
+      transition: max-height 0.5s;
+    }
   }
 }
 </style>
