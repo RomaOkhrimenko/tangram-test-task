@@ -1,20 +1,11 @@
 <template>
-  <div
-    class="catalog-input"
-    :class="`${isInformation ? 'information' : ''} ${isOpen ? 'open' : ''}`"
-  >
-    <div class="catalog-input__field" @click="handleOpenInput(!isOpen)">
+  <div class="project-input" :class="`${isOpen ? 'open' : ''}`">
+    <div class="project-input__field" @click="handleOpenInput(!isOpen)">
       <span>{{ title }}</span>
-      <b v-if="!isInformation" :class="`${!items.length ? 'disable' : ''}`"
-        >({{ items.length }})</b
-      >
+      <b :class="`${!items.length ? 'disable' : ''}`">({{ items.length }})</b>
       <ArrowRightSvg />
     </div>
-    <div
-      v-if="!isInformation"
-      class="catalog-input-dropdown"
-      :class="`${isOpen ? 'open' : ''}`"
-    >
+    <div class="project-input-dropdown" :class="`${isOpen ? 'open' : ''}`">
       <img src="~/assets/images/jpg/kitchen.jpg" alt="" />
     </div>
   </div>
@@ -34,10 +25,6 @@ export default {
     items: {
       type: Array,
       default: []
-    },
-    isInformation: {
-      type: Boolean,
-      required: true
     }
   },
   data() {
@@ -56,18 +43,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.catalog-input {
+.project-input {
   margin-bottom: 1.6rem;
-  &.information {
-    .catalog-input__field {
-      svg {
-        opacity: 0.24;
-      }
-    }
-  }
 
   &.open {
-    .catalog-input__field {
+    .project-input__field {
       svg {
         transform: rotate(90deg);
       }

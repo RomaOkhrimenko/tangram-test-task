@@ -17,25 +17,51 @@
           <div
             class="catalog-project__header-filter"
             :class="`${isShowFilter ? 'active' : ''}`"
-          ></div>
+          >
+            <div v-if="!isInformation">
+              <CatalogProjectFilterInput
+                v-for="(item, index) in filters"
+                :key="index"
+                :title="item.title"
+                :isChecked="index === checked"
+                :id="index"
+                @handleFilterOption="handleFilterOption"
+              />
+            </div>
+          </div>
         </div>
       </div>
-      <CatalogInput
-        v-for="input in data"
-        :title="input.title"
-        :isInformation="isInformation"
-        :items="input.items"
-      />
+
+      <div v-if="!isInformation">
+        <CatalogInputProject
+          v-for="(input, index) in project_inputs"
+          :key="index"
+          :title="input.title"
+          :items="input.items"
+        />
+      </div>
+
+      <div v-if="isInformation">
+        <CatalogInputInformation
+          v-for="(input, index) in information_inputs"
+          :key="index"
+          :title="input.title"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import CatalogInput from '@/components/templates/chat-page/chat-catalog/catalog-input/CatalogInput.vue'
+import CatalogInputProject from '@/components/templates/chat-page/chat-catalog/catalog-input/CatalogInputProject.vue'
 import { ArrowDownFillSvg } from '~/assets/images/svg'
+import CatalogProjectFilterInput from '~/components/templates/chat-page/chat-catalog/catalog-input/CatalogProjectFilterInput.vue'
+import CatalogInputInformation from '~/components/templates/chat-page/chat-catalog/catalog-input/CatalogInputInformation.vue'
 export default {
   components: {
-    CatalogInput,
+    CatalogProjectFilterInput,
+    CatalogInputInformation,
+    CatalogInputProject,
     ArrowDownFillSvg
   },
   props: {
@@ -43,25 +69,38 @@ export default {
       type: String,
       required: true
     },
+    information_inputs: {
+      type: Array,
+      required: false
+    },
+    project_inputs: {
+      type: Array,
+      required: false
+    },
     isInformation: {
       type: Boolean,
-      required: true
-    },
-    data: {
-      type: Array,
       required: true
     }
   },
   data() {
     return {
-      option: 'Auftragnehmer',
-      isShowFilter: false
+      option: '',
+      isShowFilter: false,
+      checked: 0,
+      filters: [{ title: 'Auftragnehmer' }, { title: 'Auftraggeber' }]
     }
   },
   methods: {
     handleShowFilter(status) {
       this.isShowFilter = status
+    },
+    handleFilterOption(obj) {
+      this.checked = obj.id
+      this.option = obj.title
     }
+  },
+  mounted() {
+    this.option = this.filters[0].title
   }
 }
 </script>
@@ -93,7 +132,7 @@ export default {
         align-items: center;
         cursor: pointer;
         position: relative;
-
+        width: 204px;
         &:hover {
           svg {
             transform: rotate(180deg);
@@ -107,6 +146,7 @@ export default {
           line-height: 20px;
           font-weight: 500;
           margin-right: 0.8rem;
+          margin-left: auto;
         }
         svg {
           transition: transform 0.3s;
@@ -117,16 +157,19 @@ export default {
         top: 100%;
         border-radius: 8px;
         width: 100%;
-        height: 20px;
-        padding: 1.2rem 1.6rem;
         background-color: #fff;
         z-index: 100;
         opacity: 0;
-
         transition: opacity 0.3s;
 
         &.active {
           opacity: 1;
+        }
+
+        div {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
       }
     }

@@ -30,6 +30,37 @@
           <span>Monteur</span>
         </div>
       </div>
+
+      <div class="chat-members-user">
+        <ChatAvatar status="online" />
+        <div class="chat-members-user__info">
+          <h3>Vorname und Nachname</h3>
+          <span>Monteur</span>
+        </div>
+      </div>
+
+      <div class="chat-members-user">
+        <ChatAvatar status="online" />
+        <div class="chat-members-user__info">
+          <h3>Vorname und Nachname</h3>
+          <span>Monteur</span>
+        </div>
+      </div>
+
+      <div class="chat-members-user">
+        <ChatAvatar status="online" />
+        <div class="chat-members-user__info">
+          <h3>Vorname und Nachname</h3>
+          <span>Monteur</span>
+        </div>
+      </div>
+      <div class="chat-members-user">
+        <ChatAvatar status="online" />
+        <div class="chat-members-user__info">
+          <h3>Vorname und Nachname</h3>
+          <span>Monteur</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -43,7 +74,7 @@ export default {
 
   data() {
     return {
-      isShowModal: true
+      isShowModal: false
     }
   },
 
@@ -60,7 +91,7 @@ export default {
   display: flex;
   align-items: center;
   position: relative;
-  15 30 & > h3 {
+  & > h3 {
     font-size: 1.7rem;
     line-height: 20px;
     font-weight: 500;
@@ -122,7 +153,6 @@ export default {
     position: absolute;
     top: 100%;
     width: 100%;
-    height: 100px;
     background: #ffffff;
     box-shadow: 0 8px 16px #11111129;
     border: 1px solid #dcdcdc;
@@ -141,6 +171,7 @@ export default {
   &-user {
     display: flex;
     align-items: center;
+    margin-bottom: 1.6rem;
     .chat-avatar {
       transform: scale(0.9);
       margin-right: 1.6rem;

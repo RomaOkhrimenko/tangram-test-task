@@ -18,6 +18,11 @@ import FolderOpenSvg from './folder-open.svg?inline'
 import NoteLockSvg from './note_lock.svg?inline'
 import ArrowRightSvg from './arrow-right.svg?inline'
 import ArrowDownFillSvg from './arrow-down-fill.svg?inline'
+import CheckSvg from './check.svg?inline'
+import CalendarSvg from './calendar.svg?inline'
+import MapMark from './map-mark.svg?inline'
+import PhoneSvg from './phone.svg?inline'
+import WatchSvg from './watch.svg?inline'
 
 export {
   CloseSvg,
@@ -39,5 +44,10 @@ export {
   FolderOpenSvg,
   NoteLockSvg,
   ArrowRightSvg,
-  ArrowDownFillSvg
+  ArrowDownFillSvg,
+  CheckSvg,
+  CalendarSvg,
+  MapMark,
+  PhoneSvg,
+  WatchSvg
 }

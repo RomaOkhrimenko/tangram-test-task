@@ -10,15 +10,16 @@
       v-if="showMenu"
       title="Projekt Information"
       :isInformation="true"
-      :data="information_inputs"
+      :information_inputs="information_inputs"
     >
       <NoteLockSvg slot="logo" />
     </CatalogContent>
+
     <CatalogContent
       v-if="showMenu"
       title="Katalog"
       :isInformation="false"
-      :data="project_inputs"
+      :project_inputs="project_inputs"
     >
       <FolderOpenSvg slot="logo" />
     </CatalogContent>

@@ -14,9 +14,14 @@
     <div class="chat-header-right">
       <ChatMembers />
       <div class="chat-header-right__line" />
-      <div class="chat-header-right__params">
+      <button
+        class="chat-header-right__params"
+        :class="isShowParams ? 'active' : ''"
+        @click="handleShowParams"
+      >
         <SettingFill />
-      </div>
+      </button>
+      <ChatSettings :isShowSettings="isShowParams" />
     </div>
   </div>
 </template>
@@ -25,9 +30,22 @@
 import ChatAvatar from '@/components/templates/blocks/ChatAvatar.vue'
 import { PlusSvg, SettingFill } from '~/assets/images/svg/index'
 import ChatMembers from '@/components/templates/chat-page/chat/chat-header/ChatMembers.vue'
+import ChatSettings from '~/components/templates/chat-page/chat/chat-header/ChatSettings.vue'
 
 export default {
-  components: { ChatMembers, ChatAvatar, SettingFill, PlusSvg }
+  components: { ChatSettings, ChatMembers, ChatAvatar, SettingFill, PlusSvg },
+
+  data() {
+    return {
+      isShowParams: false
+    }
+  },
+
+  methods: {
+    handleShowParams() {
+      this.isShowParams = !this.isShowParams
+    }
+  }
 }
 </script>
 
@@ -70,6 +88,7 @@ export default {
   &-right {
     display: flex;
     align-items: center;
+    position: relative;
 
     &__line {
       height: 48px;
@@ -78,11 +97,34 @@ export default {
       margin-right: 3.6rem;
       margin-left: 3.2rem;
     }
-  }
 
-  &__params {
-    svg {
-      color: #111111;
+    &__params {
+      padding: 0.8rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      border-radius: 8px;
+      border: none;
+
+      &:hover {
+        background-color: rgba(111, 111, 111, 0.08);
+
+        svg {
+          transform: rotate(60deg);
+        }
+      }
+
+      &.active {
+        background-color: #007aff;
+
+        svg {
+          color: #fff;
+          transform: rotate(60deg);
+        }
+      }
+
+      svg {
+        transition: transform 0.3s;
+      }
     }
   }
 }

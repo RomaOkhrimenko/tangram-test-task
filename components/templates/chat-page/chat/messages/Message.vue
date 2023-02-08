@@ -3,8 +3,15 @@
     <img src="~/assets/images/png/avatar.png" alt="image" />
     <div class="message__container">
       <div class="message__content" v-for="item in message">
-        <span v-if="item.message">{{ item.message }}</span>
-        <img v-if="item.message_image" :src="item.message_image" alt="" />
+        <span :key="item.message_image" v-if="item.message">{{
+          item.message
+        }}</span>
+        <img
+          :key="item.message_image"
+          v-if="item.message_image"
+          :src="item.message_image"
+          alt=""
+        />
       </div>
       <div class="message__time">
         {{ time }}
