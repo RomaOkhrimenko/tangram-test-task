@@ -64,6 +64,8 @@ export default {
   padding: 1.6rem;
   transition: max-width 0.5s;
   width: 100%;
+  overflow-y: auto;
+
   &.active {
     max-width: 384px;
   }

@@ -14,11 +14,7 @@
             Vorfall Melden
           </div>
 
-          <div class="message-input-security">
-            <UnlockSvg />
-            <span>Offenes Projekt</span>
-            <ThreeVerticalDotSvg />
-          </div>
+          <ProjectStatus />
         </div>
       </div>
       <div class="message-input-bottom">
@@ -44,11 +40,10 @@ import {
   SentMessageSvg,
   PaperClipSvg,
   MicrophoneSlashSvg,
-  ThreeVerticalDotSvg,
-  UnlockSvg,
-  MessageDangerSvg,
-  PlusSvg
+  PlusSvg,
+  MessageDangerSvg
 } from '~/assets/images/svg'
+import ProjectStatus from '@/components/templates/chat-page/chat/message-input/ProjectStatus.vue'
 export default {
   data() {
     return {
@@ -56,11 +51,10 @@ export default {
     }
   },
   components: {
+    ProjectStatus,
     SentMessageSvg,
     PaperClipSvg,
     MicrophoneSlashSvg,
-    ThreeVerticalDotSvg,
-    UnlockSvg,
     MessageDangerSvg,
     PlusSvg
   }
@@ -136,36 +130,6 @@ export default {
     &:hover {
       background-color: #f5f5f5;
       opacity: 1;
-    }
-  }
-
-  &-security {
-    display: flex;
-    align-items: center;
-    color: #007aff;
-    padding: 0.8rem 0.8rem 0.8rem 1.6rem;
-    background-color: rgba(0, 122, 255, 0.08);
-    border-radius: 20px;
-    transition: background-color 0.3s, color 0.3s;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #007aff;
-      color: #fff;
-    }
-
-    svg {
-      &:first-child {
-        margin-right: 0.8rem;
-      }
-    }
-
-    span {
-      margin-left: 0.8rem;
-      margin-right: 1.6rem;
-      font-size: 1.3rem;
-      line-height: 16px;
-      font-weight: 600;
     }
   }
 

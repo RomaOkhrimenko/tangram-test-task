@@ -23,6 +23,8 @@ import CalendarSvg from './calendar.svg?inline'
 import MapMark from './map-mark.svg?inline'
 import PhoneSvg from './phone.svg?inline'
 import WatchSvg from './watch.svg?inline'
+import LockSvg from './lock.svg?inline'
+import CloseCircle from './close-circle.svg?inline'
 
 export {
   CloseSvg,
@@ -49,5 +51,7 @@ export {
   CalendarSvg,
   MapMark,
   PhoneSvg,
-  WatchSvg
+  WatchSvg,
+  LockSvg,
+  CloseCircle
 }

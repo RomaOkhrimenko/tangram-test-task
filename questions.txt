@@ -1,3 +1,5 @@
 CatalogContent -> Rerender CatalogProjectFilterInput
 svg chatHeader settingsFill
 ChatNavigation Tabs
+Messages Scroll
+Project Status hover -> Debounce?

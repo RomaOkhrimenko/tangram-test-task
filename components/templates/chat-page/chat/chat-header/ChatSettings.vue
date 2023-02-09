@@ -124,8 +124,10 @@ export default {
   z-index: 100;
   opacity: 0;
   transition: opacity 0.3s;
+  pointer-events: none;
   &.active {
     opacity: 1;
+    pointer-events: auto;
   }
 
   &__header {

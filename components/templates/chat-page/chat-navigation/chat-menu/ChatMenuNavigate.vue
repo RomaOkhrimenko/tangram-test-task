@@ -74,6 +74,12 @@ export default {
         transform: rotate(90deg);
       }
     }
+
+    &.active {
+      svg {
+        transform: rotate(90deg);
+      }
+    }
   }
 
   &.active {

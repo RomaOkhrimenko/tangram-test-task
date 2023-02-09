@@ -1,28 +1,42 @@
 <template>
   <div class="project-input" :class="`${isOpen ? 'open' : ''}`">
-    <div class="project-input__field" @click="handleOpenInput(!isOpen)">
-      <span>{{ title }}</span>
-      <b :class="`${!items.length ? 'disable' : ''}`">({{ items.length }})</b>
-      <ArrowRightSvg />
-    </div>
-    <div class="project-input-dropdown" :class="`${isOpen ? 'open' : ''}`">
-      <img src="~/assets/images/jpg/kitchen.jpg" alt="" />
-    </div>
+    <InputDropdown :config="{ options }">
+      <div
+        slot="input"
+        class="project-input__field"
+        @click="handleOpenInput(!isOpen)"
+      >
+        <span>{{ title }}</span>
+        <b :class="`${!options.length ? 'disable' : ''}`"
+          >({{ options.length }})</b
+        >
+        <ArrowRightSvg />
+      </div>
+
+      <div slot="options" class="project-input-dropdown">
+        <div v-for="item in options" class="project-input-dropdown__option">
+          <div><span>March 2019</span> <span>28 Marz 2022</span></div>
+          <img :src="item.img" alt="" />
+        </div>
+      </div>
+    </InputDropdown>
   </div>
 </template>
 
 <script>
 import { ArrowRightSvg } from '~/assets/images/svg'
+import InputDropdown from '@/components/ui/InputDropdown.vue'
 export default {
   components: {
-    ArrowRightSvg
+    ArrowRightSvg,
+    InputDropdown
   },
   props: {
     title: {
       type: String,
       required: true
     },
-    items: {
+    options: {
       type: Array,
       default: []
     }
@@ -38,6 +52,9 @@ export default {
       if (this.isInformation) return
       this.isOpen = status
     }
+  },
+  created() {
+    console.log(this.options)
   }
 }
 </script>
@@ -56,7 +73,7 @@ export default {
   &__field {
     display: flex;
     align-items: center;
-
+    width: 100%;
     padding: 1.2rem 2.4rem;
     background: #fff;
     border-radius: 8px;
@@ -84,14 +101,36 @@ export default {
 
   &-dropdown {
     width: 100%;
-    max-height: 0;
     background-color: #fff;
-    transition: max-height 0.5s;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 
-    &.open {
-      max-height: 1000px;
-      transition: max-height 0.5s;
+    &__option {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 0 1.6rem;
+      margin-bottom: 1.6rem;
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.1rem;
+
+        span {
+          font-size: 1rem;
+          line-height: 13px;
+          color: #606060;
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 144px;
+        object-fit: cover;
+        border-radius: 4px;
+      }
     }
   }
 }

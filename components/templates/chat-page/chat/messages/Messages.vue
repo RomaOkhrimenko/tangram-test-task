@@ -1,5 +1,5 @@
 <template>
-  <div class="messages">
+  <div ref="messages" class="messages">
     <Message
       :message="[{ message: 'My message' }]"
       time="10:00AM"
@@ -44,7 +44,11 @@
 import Message from '@/components/templates/chat-page/chat/messages/Message.vue'
 
 export default {
-  components: { Message }
+  components: { Message },
+
+  mounted() {
+    this.$refs.messages.scrollTo(0, this.$refs.messages.offsetHeight)
+  }
 }
 </script>
 

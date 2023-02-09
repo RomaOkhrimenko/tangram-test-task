@@ -31,13 +31,14 @@
           </div>
         </div>
       </div>
+      <InputDropdown />
 
       <div v-if="!isInformation">
         <CatalogInputProject
           v-for="(input, index) in project_inputs"
           :key="index"
           :title="input.title"
-          :items="input.items"
+          :options="input.options"
         />
       </div>
 
@@ -57,12 +58,14 @@ import CatalogInputProject from '@/components/templates/chat-page/chat-catalog/c
 import { ArrowDownFillSvg } from '~/assets/images/svg'
 import CatalogProjectFilterInput from '~/components/templates/chat-page/chat-catalog/catalog-input/CatalogProjectFilterInput.vue'
 import CatalogInputInformation from '~/components/templates/chat-page/chat-catalog/catalog-input/CatalogInputInformation.vue'
+import InputDropdown from '@/components/ui/InputDropdown.vue'
 export default {
   components: {
     CatalogProjectFilterInput,
     CatalogInputInformation,
     CatalogInputProject,
-    ArrowDownFillSvg
+    ArrowDownFillSvg,
+    InputDropdown
   },
   props: {
     title: {
@@ -70,10 +73,6 @@ export default {
       required: true
     },
     information_inputs: {
-      type: Array,
-      required: false
-    },
-    project_inputs: {
       type: Array,
       required: false
     },
@@ -87,7 +86,35 @@ export default {
       option: '',
       isShowFilter: false,
       checked: 0,
-      filters: [{ title: 'Auftragnehmer' }, { title: 'Auftraggeber' }]
+      filters: [{ title: 'Auftragnehmer' }, { title: 'Auftraggeber' }],
+      project_inputs: [
+        {
+          title: 'Title',
+          options: [
+            {
+              img:
+                'https://images.unsplash.com/photo-1661956601031-4cf09efadfce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80'
+            }
+          ]
+        },
+        {
+          title: 'title 2',
+          options: [
+            {
+              img:
+                'https://images.unsplash.com/photo-1661956601031-4cf09efadfce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80'
+            },
+            {
+              img:
+                'https://images.unsplash.com/photo-1661956601031-4cf09efadfce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80'
+            },
+            {
+              img:
+                'https://images.unsplash.com/photo-1661956601031-4cf09efadfce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80'
+            }
+          ]
+        }
+      ]
     }
   },
   methods: {
@@ -161,9 +188,11 @@ export default {
         z-index: 100;
         opacity: 0;
         transition: opacity 0.3s;
+        pointer-events: none;
 
         &.active {
           opacity: 1;
+          pointer-events: auto;
         }
 
         div {
