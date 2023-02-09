@@ -33,12 +33,13 @@
       </div>
       <InputDropdown />
 
-      <div v-if="!isInformation">
+      <div v-if="!isInformation" class="catalog-project__wrapper">
         <CatalogInputProject
           v-for="(input, index) in project_inputs"
           :key="index"
           :title="input.title"
           :options="input.options"
+          :id="index"
         />
       </div>
 
@@ -111,6 +112,26 @@ export default {
             {
               img:
                 'https://images.unsplash.com/photo-1661956601031-4cf09efadfce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80'
+            },
+            {
+              img:
+                'https://images.unsplash.com/photo-1661956601031-4cf09efadfce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80'
+            },
+            {
+              img:
+                'https://images.unsplash.com/photo-1661956601031-4cf09efadfce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80'
+            },
+            {
+              img:
+                'https://images.unsplash.com/photo-1661956601031-4cf09efadfce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80'
+            },
+            {
+              img:
+                'https://images.unsplash.com/photo-1661956601031-4cf09efadfce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80'
+            },
+            {
+              img:
+                'https://images.unsplash.com/photo-1661956601031-4cf09efadfce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80'
             }
           ]
         }
@@ -122,7 +143,7 @@ export default {
       this.isShowFilter = status
     },
     handleFilterOption(obj) {
-      this.checked = obj.id
+      setTimeout(() => (this.checked = obj.id), 0)
       this.option = obj.title
     }
   },
@@ -136,7 +157,12 @@ export default {
 .catalog {
   margin-top: 4rem;
   margin-bottom: 4.8rem;
+  white-space: nowrap;
   &-project {
+    &__wrapper {
+      height: 100%;
+      overflow: auto;
+    }
     &__header {
       display: flex;
       align-items: center;

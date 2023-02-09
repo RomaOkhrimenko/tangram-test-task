@@ -18,11 +18,22 @@
         </div>
       </div>
       <div class="message-input-bottom">
-        <div class="message-input-microphone">
-          <MicrophoneSlashSvg />
-        </div>
+        <Microphone
+          @handleMicrophoneStatus="handleMicrophoneStatus"
+          :microphoneStatus="microphoneStatus"
+        />
         <div class="message-input__input">
-          <input v-model="message" type="text" placeholder="Type..." />
+          <div
+            class="hide"
+            :class="{
+              animate: microphoneStatus === 'on' || microphoneStatus === 'stop'
+            }"
+          ></div>
+          <input
+            v-model="message"
+            type="text"
+            placeholder="Beginnen Sie mit dem Schreiben oder ziehen Sie Dateien in Ihre Notiz"
+          />
         </div>
         <div class="message-input-attachment">
           <PaperClipSvg />
@@ -41,22 +52,33 @@ import {
   PaperClipSvg,
   MicrophoneSlashSvg,
   PlusSvg,
-  MessageDangerSvg
+  MessageDangerSvg,
+  WorkMicrophoneSvg
 } from '~/assets/images/svg'
 import ProjectStatus from '@/components/templates/chat-page/chat/message-input/ProjectStatus.vue'
+import Microphone from '@/components/templates/chat-page/chat/message-input/Microphone.vue'
 export default {
-  data() {
-    return {
-      message: ''
-    }
-  },
   components: {
+    Microphone,
     ProjectStatus,
     SentMessageSvg,
     PaperClipSvg,
     MicrophoneSlashSvg,
     MessageDangerSvg,
-    PlusSvg
+    PlusSvg,
+    WorkMicrophoneSvg
+  },
+
+  data() {
+    return {
+      message: '',
+      microphoneStatus: 'off'
+    }
+  },
+  methods: {
+    handleMicrophoneStatus(status) {
+      this.microphoneStatus = status
+    }
   }
 }
 </script>
@@ -139,17 +161,23 @@ export default {
     margin-top: 0.8rem;
   }
 
-  &-microphone {
-    background: rgba(111, 111, 111, 0.24);
-    padding: 0.8rem;
-    border-radius: 50%;
-    margin-right: 1rem;
-    color: #fff;
-  }
-
   &__input {
     width: 100%;
     margin-right: 1rem;
+    position: relative;
+
+    .hide {
+      position: absolute;
+      left: 0;
+      height: 100%;
+      background-color: #fff;
+      width: 0;
+      transition: width 1s;
+
+      &.animate {
+        width: 100%;
+      }
+    }
     input {
       padding: 1rem 0.5rem;
       width: 100%;

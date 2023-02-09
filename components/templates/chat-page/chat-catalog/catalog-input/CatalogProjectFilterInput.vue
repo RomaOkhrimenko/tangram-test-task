@@ -27,11 +27,6 @@ export default {
       required: true
     }
   },
-  data() {
-    return {
-      checked: false
-    }
-  },
   methods: {
     handleFilterOption() {
       this.$emit('handleFilterOption', { id: this.id, title: this.title })

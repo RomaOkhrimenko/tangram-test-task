@@ -1,9 +1,9 @@
 <template>
   <div
-    class="project-status close"
+    class="project-status"
     @mouseover="handleShowOption(true)"
     @mouseleave="handleShowOption(false)"
-    :class="isShowOption ? 'active' : ''"
+    :class="{ close: status === 'closed', active: isShowOption }"
   >
     <UnlockSvg v-if="status === 'offene'" />
     <LockSvg v-if="status === 'closed'" />
@@ -105,17 +105,17 @@ export default {
     color: #007aff;
   }
 
-  &.close {
-    background-color: #111;
+  &.active {
+    background-color: #007aff;
+
     & > svg,
     & > span {
       color: #fff;
     }
   }
 
-  &.active {
-    background-color: #007aff;
-
+  &.close {
+    background-color: #111;
     & > svg,
     & > span {
       color: #fff;

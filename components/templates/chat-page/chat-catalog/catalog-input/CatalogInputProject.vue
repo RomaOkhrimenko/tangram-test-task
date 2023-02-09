@@ -1,9 +1,9 @@
 <template>
-  <div class="project-input" :class="`${isOpen ? 'open' : ''}`">
-    <InputDropdown :config="{ options }">
+  <div class="catalog-input" :class="`${isOpen ? 'open' : ''}`">
+    <InputDropdown :config="{ options }" :isExpanded="isOpen">
       <div
         slot="input"
-        class="project-input__field"
+        class="catalog-input__field"
         @click="handleOpenInput(!isOpen)"
       >
         <span>{{ title }}</span>
@@ -13,8 +13,28 @@
         <ArrowRightSvg />
       </div>
 
-      <div slot="options" class="project-input-dropdown">
-        <div v-for="item in options" class="project-input-dropdown__option">
+      <div slot="options" class="catalog-input-dropdown">
+        <div class="catalog-input-dropdown__header">
+          <div class="catalog-input-dropdown__header-filters">
+            <span class="active">Images</span>
+            <span>Videos</span>
+            <span>Files</span>
+          </div>
+
+          <div class="catalog-input-dropdown__header-input">
+            <label :for="`catalog-input-file-${id}`">
+              <span>{{ fileName }}</span>
+              <PlusSvg />
+            </label>
+            <input
+              @change="handleInputFile"
+              type="file"
+              :id="`catalog-input-file-${id}`"
+              hidden
+            />
+          </div>
+        </div>
+        <div v-for="item in options" class="catalog-input-dropdown__option">
           <div><span>March 2019</span> <span>28 Marz 2022</span></div>
           <img :src="item.img" alt="" />
         </div>
@@ -24,12 +44,14 @@
 </template>
 
 <script>
-import { ArrowRightSvg } from '~/assets/images/svg'
+import { ArrowRightSvg, PlusSvg } from '~/assets/images/svg'
 import InputDropdown from '@/components/ui/InputDropdown.vue'
+import { cutString } from '@/utils/functions'
 export default {
   components: {
     ArrowRightSvg,
-    InputDropdown
+    InputDropdown,
+    PlusSvg
   },
   props: {
     title: {
@@ -39,11 +61,16 @@ export default {
     options: {
       type: Array,
       default: []
+    },
+    id: {
+      type: Number,
+      required: true
     }
   },
   data() {
     return {
-      isOpen: false
+      isOpen: false,
+      fileName: 'Zum Teilen hier ablegen'
     }
   },
 
@@ -51,6 +78,10 @@ export default {
     handleOpenInput(status) {
       if (this.isInformation) return
       this.isOpen = status
+    },
+
+    handleInputFile(e) {
+      this.fileName = cutString(e.target.files[0].name, 20)
     }
   },
   created() {
@@ -60,11 +91,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.project-input {
+.catalog-input {
   margin-bottom: 1.6rem;
 
   &.open {
-    .project-input__field {
+    .catalog-input__field {
       svg {
         transform: rotate(90deg);
       }
@@ -106,12 +137,68 @@ export default {
     display: flex;
     flex-direction: column;
 
+    &__header {
+      padding-top: 1.6rem;
+      margin-bottom: 1.6rem;
+      &-filters {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5.6rem;
+        font-size: 0.8rem;
+        line-height: 10px;
+        margin: 0 2.4rem 1.6rem;
+        padding-bottom: 1.4rem;
+        border-bottom: 1px solid #d9d9d9;
+
+        span {
+          cursor: pointer;
+          position: relative;
+
+          &.active {
+            color: #007aff;
+
+            &:before {
+              content: '';
+              position: absolute;
+              bottom: -1.4rem;
+              width: 5.8rem;
+              height: 2px;
+              background-color: #007aff;
+              left: -1.5rem;
+            }
+          }
+        }
+      }
+
+      &-input {
+        label {
+          background-color: rgba(111, 111, 111, 0.04);
+          border-radius: 8px;
+          margin: 0 1.6rem;
+          padding: 1.4rem 1.6rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          span {
+            font-size: 1.5rem;
+            line-height: 19px;
+          }
+        }
+      }
+    }
+
     &__option {
       width: 100%;
       display: flex;
       flex-direction: column;
       padding: 0 1.6rem;
       margin-bottom: 1.6rem;
+
+      &:last-child {
+        padding-bottom: 1.6rem;
+      }
       div {
         display: flex;
         align-items: center;

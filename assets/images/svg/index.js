@@ -25,6 +25,8 @@ import PhoneSvg from './phone.svg?inline'
 import WatchSvg from './watch.svg?inline'
 import LockSvg from './lock.svg?inline'
 import CloseCircle from './close-circle.svg?inline'
+import EmptyStarSvg from './empty-star.svg?inline'
+import WorkMicrophoneSvg from './work-microphone.svg?inline'
 
 export {
   CloseSvg,
@@ -53,5 +55,7 @@ export {
   PhoneSvg,
   WatchSvg,
   LockSvg,
-  CloseCircle
+  CloseCircle,
+  EmptyStarSvg,
+  WorkMicrophoneSvg
 }

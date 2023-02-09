@@ -1,7 +1,6 @@
 <template>
   <div
     class="dropdown"
-    @click="toggleRiskLevels"
     :class="{ expanded: isExpanded }"
     :style="computedStyles"
   >
@@ -15,12 +14,12 @@
 
 <script>
 export default {
-  props: ['config'],
+  props: ['config', 'isExpanded'],
   data() {
     return {
       // optionsHeight: 0,
       // configOptions: [],
-      isExpanded: false
+      // isExpanded: false
       // optionHeight: 60
     }
   },
@@ -67,9 +66,6 @@ export default {
     }
   },
   methods: {
-    toggleRiskLevels() {
-      this.isExpanded = !this.isExpanded
-    }
     // setConfigData() {
     //   this.configOptions = this.config?.options
     // },
@@ -92,10 +88,8 @@ export default {
   position: relative;
   border: 1px solid transparent;
   border-radius: var(--main-el-border-radius);
-  cursor: pointer;
   color: var(--dropdown-default-text-color);
   background: var(--dropdown-background-color);
-  user-select: none;
   .dropdown-label-container {
     display: flex;
     width: 100%;

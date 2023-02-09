@@ -3,3 +3,5 @@ svg chatHeader settingsFill
 ChatNavigation Tabs
 Messages Scroll
 Project Status hover -> Debounce?
+doesnt understand how make scroll Chat Catalog
+Congratiulations Gif

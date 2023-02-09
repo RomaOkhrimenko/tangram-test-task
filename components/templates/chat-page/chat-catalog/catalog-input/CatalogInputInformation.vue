@@ -1,6 +1,6 @@
 <template>
   <div class="input-information" :class="`${isOpen ? 'open' : ''}`">
-    <InputDropdown>
+    <InputDropdown :isExpanded="isOpen">
       <div
         slot="input"
         class="input-information__field"
@@ -13,7 +13,7 @@
       <div slot="options" class="input-information-dropdown">
         <div class="input-information-dropdown__container">
           <div class="input-information__main">
-            <div class="location">
+            <div class="location" @click="onClick">
               <MapMark /> <span>Platz 24 60594 Frankfurt am Main</span>
             </div>
 
@@ -91,6 +91,9 @@ export default {
   methods: {
     handleOpenInput(status) {
       this.isOpen = status
+    },
+    onClick() {
+      console.log('click')
     }
   }
 }
@@ -118,8 +121,6 @@ export default {
     background: #fff;
     border-radius: 8px;
     cursor: pointer;
-    user-select: none;
-
     span {
       font-size: 1.7rem;
       line-height: 20px;

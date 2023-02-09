@@ -1,14 +1,16 @@
 <template>
   <div>
-    <InputDropdown />
+    <ChatCongratiulationsAlert />
   </div>
 </template>
 
 <script>
 import InputDropdown from '@/components/ui/InputDropdown.vue'
+import ProjectRatingModals from '@/components/templates/modals/ProjectRatingModals.vue'
+import ChatCongratiulationsAlert from '@/components/templates/chat-page/alerts/ChatCongratiulationsAlert.vue'
 
 export default {
-  components: { InputDropdown }
+  components: { ChatCongratiulationsAlert, ProjectRatingModals, InputDropdown }
 }
 </script>
 
