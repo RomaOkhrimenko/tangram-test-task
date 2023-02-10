@@ -58,6 +58,10 @@ label {
     }
   }
 
+  @media (max-width: 1440px) {
+    font-size: 1.5rem;
+  }
+
   input {
     position: absolute;
     opacity: 0;
@@ -83,6 +87,11 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 1440px) {
+      width: 20px;
+      height: 20px;
+    }
 
     svg {
       opacity: 0;

@@ -3,13 +3,17 @@
     class="project-status"
     @mouseover="handleShowOption(true)"
     @mouseleave="handleShowOption(false)"
-    :class="{ close: status === 'closed', active: isShowOption }"
   >
-    <UnlockSvg v-if="status === 'offene'" />
-    <LockSvg v-if="status === 'closed'" />
-    <span>Offenes Projekt</span>
-    <ThreeVerticalDotSvg v-if="!isShowOption" />
-    <CloseCircle v-if="isShowOption" />
+    <div
+      class="project-status__container"
+      :class="{ close: status === 'closed', active: isShowOption }"
+    >
+      <UnlockSvg v-if="status === 'offene'" />
+      <LockSvg v-if="status === 'closed'" />
+      <span>Offenes Projekt</span>
+      <ThreeVerticalDotSvg v-if="!isShowOption" />
+      <CloseCircle v-if="isShowOption" />
+    </div>
 
     <div class="project-status-menu" :class="isShowOption ? 'show' : ''">
       <div class="project-status-menu__title">
@@ -91,49 +95,60 @@ export default {
 
 <style lang="scss" scoped>
 .project-status {
-  display: flex;
-  align-items: center;
   position: relative;
-  padding: 0.8rem 0.8rem 0.8rem 1.6rem;
-  background-color: rgba(0, 122, 255, 0.08);
-  border-radius: 20px;
-  transition: background-color 0.3s, color 0.3s;
-  cursor: pointer;
 
-  & > svg,
-  & > span {
-    color: #007aff;
+  &:before {
+    content: '';
+    position: absolute;
+    height: 2.4rem;
+    bottom: 100%;
+    width: 100%;
   }
 
-  &.active {
-    background-color: #007aff;
+  &__container {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 0.8rem 0.8rem 1.6rem;
+    background-color: rgba(0, 122, 255, 0.08);
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
 
     & > svg,
     & > span {
-      color: #fff;
+      color: #007aff;
     }
-  }
 
-  &.close {
-    background-color: #111;
-    & > svg,
+    &.active {
+      background-color: #007aff;
+
+      & > svg,
+      & > span {
+        color: #fff;
+      }
+    }
+
+    &.close {
+      background-color: #111;
+      & > svg,
+      & > span {
+        color: #fff;
+      }
+    }
+
+    & > svg {
+      &:first-child {
+        margin-right: 0.8rem;
+      }
+    }
+
     & > span {
-      color: #fff;
+      margin-left: 0.8rem;
+      margin-right: 1.6rem;
+      font-size: 1.3rem;
+      line-height: 16px;
+      font-weight: 600;
     }
-  }
-
-  & > svg {
-    &:first-child {
-      margin-right: 0.8rem;
-    }
-  }
-
-  & > span {
-    margin-left: 0.8rem;
-    margin-right: 1.6rem;
-    font-size: 1.3rem;
-    line-height: 16px;
-    font-weight: 600;
   }
 
   &-menu {

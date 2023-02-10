@@ -1,6 +1,6 @@
 <template>
   <div class="chat">
-    <ChatHeader />
+    <ChatHeader @handleShowMenuStatus="handleShowMenuStatus" />
     <Messages />
     <MessageInput />
   </div>
@@ -10,9 +10,15 @@
 import ChatHeader from '@/components/templates/chat-page/chat/chat-header/ChatHeader.vue'
 import Messages from '@/components/templates/chat-page/chat/messages/Messages.vue'
 import MessageInput from '@/components/templates/chat-page/chat/message-input/MessageInput.vue'
+import ChatMenu from '@/components/templates/chat-page/chat-navigation/chat-menu/ChatMenu.vue'
 
 export default {
-  components: { MessageInput, Messages, ChatHeader }
+  components: { ChatMenu, MessageInput, Messages, ChatHeader },
+  methods: {
+    handleShowMenuStatus(status) {
+      this.$emit('handleShowMenuStatus', status)
+    }
+  }
 }
 </script>
 
@@ -24,5 +30,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 </style>

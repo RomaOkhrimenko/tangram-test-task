@@ -1,5 +1,5 @@
 <template>
-  <div class="contacts">
+  <div class="contacts" :class="{ active: !isShowMenu }">
     <ContactsHeader
       @handleShowMenu="handleShowMenu"
       @handleTab="handleTab"
@@ -27,6 +27,8 @@ import Contact from '@/components/templates/chat-page/chat-navigation/contacts/b
 export default {
   components: { Contact, ContactsGroup, ContactsHeader },
 
+  props: ['isShowMenu'],
+
   data() {
     return {
       tab: 'chat'
@@ -46,6 +48,16 @@ export default {
 
 <style lang="scss" scoped>
 .contacts {
+  transform: translateX(-100%);
+  transition: transform 0.5s, opacity 0.3s;
+  @media (max-width: 992px) {
+    background-color: #fff;
+    border-right: 2px solid #d9d9d9;
+  }
+
+  &.active {
+    transform: translateX(0);
+  }
   &__container {
     overflow-y: auto;
     padding: 0 2.4rem;

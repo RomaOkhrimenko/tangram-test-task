@@ -1,7 +1,7 @@
 <template>
   <div class="group-block" :class="isActive ? 'active' : ''">
     <div class="group-block__info">
-      <img src="~/assets/images/png/avatar.png" alt="Avatar">
+      <img src="~/assets/images/png/avatar.png" alt="Avatar" />
 
       <div class="group-block__info-desc">
         <h3>Thomas Muller</h3>
@@ -30,9 +30,8 @@ export default {
 .group-block {
   padding: 1.6rem;
   width: 100%;
-  background-color: #F5F5F5;
   border-radius: 8px;
-  border: 1px solid #DCDCDC;
+  border: 1px solid #dcdcdc;
   height: 80px;
   overflow: hidden;
   display: flex;
@@ -46,7 +45,7 @@ export default {
 
   &__info {
     display: flex;
-align-items: center;
+    align-items: center;
     img {
       width: 48px;
       height: 48px;

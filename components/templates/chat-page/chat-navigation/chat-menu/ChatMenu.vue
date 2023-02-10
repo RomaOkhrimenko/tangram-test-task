@@ -1,5 +1,5 @@
 <template>
-  <div class="chat-menu active">
+  <div class="chat-menu" :class="{ active: isShowMenu }">
     <div class="chat-menu-header">
       <div class="chat-menu-header__user">
         <div class="chat-menu-header__user-img">
@@ -250,6 +250,10 @@ export default {
     currentTab: {
       type: String,
       required: true
+    },
+    isShowMenu: {
+      type: Boolean,
+      required: true
     }
   },
 
@@ -266,8 +270,24 @@ export default {
 
 <style lang="scss" scoped>
 .chat-menu {
+  position: absolute;
+  top: 0;
+  width: 100%;
   background-color: #fdfdfd;
   height: 100%;
+  z-index: 3;
+  transition: transform 0.5s, opacity 0.3s;
+  transform: translateX(-100%);
+  pointer-events: none;
+
+  @media (max-width: 992px) {
+    border-right: 2px solid #d9d9d9;
+  }
+
+  &.active {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
 
   &-header {
     display: flex;

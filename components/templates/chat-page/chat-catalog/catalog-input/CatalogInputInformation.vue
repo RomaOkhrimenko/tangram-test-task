@@ -13,7 +13,7 @@
       <div slot="options" class="input-information-dropdown">
         <div class="input-information-dropdown__container">
           <div class="input-information__main">
-            <div class="location" @click="onClick">
+            <div class="location">
               <MapMark /> <span>Platz 24 60594 Frankfurt am Main</span>
             </div>
 
@@ -91,9 +91,6 @@ export default {
   methods: {
     handleOpenInput(status) {
       this.isOpen = status
-    },
-    onClick() {
-      console.log('click')
     }
   }
 }
@@ -102,6 +99,7 @@ export default {
 <style lang="scss" scoped>
 .input-information {
   margin-bottom: 1.6rem;
+  overflow: hidden;
 
   &.open {
     .input-information__field {
@@ -121,10 +119,18 @@ export default {
     background: #fff;
     border-radius: 8px;
     cursor: pointer;
+
+    @media (max-width: 1440px) {
+      padding: 1.2rem 1.2rem;
+    }
     span {
       font-size: 1.7rem;
       line-height: 20px;
       margin-right: 0.8rem;
+
+      @media (max-width: 1440px) {
+        font-size: 1.5rem;
+      }
     }
 
     b {
@@ -159,6 +165,11 @@ export default {
       flex-direction: column;
       padding: 1.6rem 2.4rem;
       border-top: 1px solid #d9d9d9;
+      flex-wrap: wrap;
+
+      @media (max-width: 1440px) {
+        padding: 1.6rem;
+      }
     }
   }
 
@@ -176,6 +187,7 @@ export default {
       div {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         font-size: 1.3rem;
         line-height: 16px;
         svg {
@@ -183,6 +195,10 @@ export default {
         }
         &:first-child {
           margin-right: 2.4rem;
+
+          @media (max-width: 1440px) {
+            margin-right: 1.6rem;
+          }
         }
       }
     }

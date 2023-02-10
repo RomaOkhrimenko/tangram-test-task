@@ -44,6 +44,7 @@ export default {
             el.classList.add('u-no-transition')
             el.removeAttribute('aria-expanded')
             el.style.height = null
+            console.log(el, el.clientHeight)
             el.style.height = el.clientHeight + 'px'
             el.setAttribute('aria-expanded', currentState)
 

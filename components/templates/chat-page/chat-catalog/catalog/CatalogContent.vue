@@ -157,7 +157,6 @@ export default {
 .catalog {
   margin-top: 4rem;
   margin-bottom: 4.8rem;
-  white-space: nowrap;
   &-project {
     &__wrapper {
       height: 100%;
@@ -166,14 +165,18 @@ export default {
     &__header {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       font-size: 2rem;
       line-height: 24px;
       color: #111;
       font-weight: 700;
       padding-bottom: 1.6rem;
       margin-bottom: 1.6rem;
-
       border-bottom: 1px solid #d9d9d9;
+
+      @media (max-width: 1440px) {
+        font-size: 1.8rem;
+      }
 
       svg {
         margin-right: 0.8rem;
@@ -185,7 +188,6 @@ export default {
         align-items: center;
         cursor: pointer;
         position: relative;
-        width: 204px;
         &:hover {
           svg {
             transform: rotate(180deg);
@@ -200,21 +202,31 @@ export default {
           font-weight: 500;
           margin-right: 0.8rem;
           margin-left: auto;
+
+          @media (max-width: 1440px) {
+            font-size: 1.2rem;
+            margin-right: 0.3rem;
+          }
         }
         svg {
           transition: transform 0.3s;
+
+          @media (max-width: 1440px) {
+            transform: scale(0.9);
+          }
         }
       }
       &-filter {
         position: absolute;
         top: 100%;
         border-radius: 8px;
-        width: 100%;
         background-color: #fff;
         z-index: 100;
         opacity: 0;
         transition: opacity 0.3s;
         pointer-events: none;
+        width: 204px;
+        right: 0;
 
         &.active {
           opacity: 1;

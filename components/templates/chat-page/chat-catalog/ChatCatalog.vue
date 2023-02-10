@@ -5,24 +5,24 @@
         <CategorySvg />
       </button>
     </div>
-    <CatalogCategoryTabs v-if="!showMenu" />
-    <CatalogContent
-      v-if="showMenu"
-      title="Projekt Information"
-      :isInformation="true"
-      :information_inputs="information_inputs"
-    >
-      <NoteLockSvg slot="logo" />
-    </CatalogContent>
 
-    <CatalogContent
-      v-if="showMenu"
-      title="Katalog"
-      :isInformation="false"
-      :project_inputs="project_inputs"
-    >
-      <FolderOpenSvg slot="logo" />
-    </CatalogContent>
+    <div class="chat-catalog__menu-close" :class="{ active: !showMenu }">
+      <CatalogCategoryTabs />
+    </div>
+
+    <div class="chat-catalog__menu-open" :class="{ active: showMenu }">
+      <CatalogContent
+        title="Projekt Information"
+        :isInformation="true"
+        :information_inputs="information_inputs"
+      >
+        <NoteLockSvg slot="logo" />
+      </CatalogContent>
+
+      <CatalogContent title="Katalog" :isInformation="false">
+        <FolderOpenSvg slot="logo" />
+      </CatalogContent>
+    </div>
   </div>
 </template>
 
@@ -41,12 +41,7 @@ export default {
   data() {
     return {
       showMenu: true,
-      information_inputs: [{ title: 'Informationen für Darsteller' }],
-      project_inputs: [
-        { title: 'Planung', items: [] },
-        { title: 'Auslieferung', items: [] },
-        { title: 'Montage', items: [{}, {}, {}] }
-      ]
+      information_inputs: [{ title: 'Informationen für Darsteller' }]
     }
   },
 
@@ -62,12 +57,50 @@ export default {
 .chat-catalog {
   max-width: 72px;
   padding: 1.6rem;
-  transition: max-width 0.5s;
+  transition: max-width 0.5s, min-width 0.5s;
   width: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
+  min-width: 0;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 
   &.active {
+    min-width: 305px;
     max-width: 384px;
+
+    @media (max-width: 1440px) {
+      max-width: 305px;
+    }
+  }
+
+  &__menu-open {
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+
+    &.active {
+      opacity: 1;
+      transition: opacity 0.3s;
+      pointer-events: auto;
+    }
+  }
+
+  &__menu-close {
+    position: absolute;
+    right: 1.6rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0s;
+
+    &.active {
+      opacity: 1;
+      transition: opacity 0.3s;
+      transition-delay: 0.4s;
+      pointer-events: auto;
+    }
   }
 
   &__menu-btn {

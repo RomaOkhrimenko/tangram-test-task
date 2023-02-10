@@ -60,7 +60,8 @@ export default {
     },
     options: {
       type: Array,
-      default: []
+      default: [],
+      required: true
     },
     id: {
       type: Number,
@@ -109,11 +110,21 @@ export default {
     background: #fff;
     border-radius: 8px;
     cursor: pointer;
+    overflow: hidden;
+
+    @media (max-width: 1440px) {
+      padding: 1.2rem 1.2rem;
+    }
 
     span {
       font-size: 1.7rem;
       line-height: 20px;
       margin-right: 0.8rem;
+
+      @media (max-width: 1440px) {
+        font-size: 1.5rem;
+        margin-right: 0.3rem;
+      }
     }
 
     b {
@@ -121,6 +132,10 @@ export default {
       line-height: 20px;
       &.disable {
         opacity: 0.24;
+      }
+
+      @media (max-width: 1440px) {
+        font-size: 1.5rem;
       }
     }
 
@@ -151,6 +166,10 @@ export default {
         padding-bottom: 1.4rem;
         border-bottom: 1px solid #d9d9d9;
 
+        @media (max-width: 1440px) {
+          gap: 3.3rem;
+        }
+
         span {
           cursor: pointer;
           position: relative;
@@ -165,7 +184,11 @@ export default {
               width: 5.8rem;
               height: 2px;
               background-color: #007aff;
-              left: -1.5rem;
+              left: 0;
+
+              @media (max-width: 1440px) {
+                width: 100%;
+              }
             }
           }
         }
@@ -184,6 +207,10 @@ export default {
           span {
             font-size: 1.5rem;
             line-height: 19px;
+
+            @media (max-width: 1440px) {
+              font-size: 1.3rem;
+            }
           }
         }
       }

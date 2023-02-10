@@ -1,44 +1,46 @@
 <template>
   <div class="rating-modals">
-    <h3 class="rating-modals__title">Werten sie die geleistete arbeit aus</h3>
+    <div class="rating-modals__container">
+      <h3 class="rating-modals__title">Werten sie die geleistete arbeit aus</h3>
 
-    <div class="rating-modals__points">
-      <div class="rating-modals-point">
-        <span>Zusammenarbeit</span>
-        <div class="rating-modals-point__stars">
-          <EmptyStarSvg v-for="(item, index) in 5" :key="index" />
+      <div class="rating-modals__points">
+        <div class="rating-modals-point">
+          <span>Zusammenarbeit</span>
+          <div class="rating-modals-point__stars">
+            <EmptyStarSvg v-for="(item, index) in 5" :key="index" />
+          </div>
+        </div>
+
+        <div class="rating-modals-point">
+          <span>Zusammenarbeit</span>
+          <div class="rating-modals-point__stars">
+            <EmptyStarSvg v-for="(item, index) in 5" :key="index" />
+          </div>
+        </div>
+
+        <div class="rating-modals-point">
+          <span>Zusammenarbeit</span>
+          <div class="rating-modals-point__stars">
+            <EmptyStarSvg v-for="(item, index) in 5" :key="index" />
+          </div>
+        </div>
+
+        <div class="rating-modals-point">
+          <span>Zusammenarbeit</span>
+          <div class="rating-modals-point__stars">
+            <EmptyStarSvg v-for="(item, index) in 5" :key="index" />
+          </div>
         </div>
       </div>
 
-      <div class="rating-modals-point">
-        <span>Zusammenarbeit</span>
-        <div class="rating-modals-point__stars">
-          <EmptyStarSvg v-for="(item, index) in 5" :key="index" />
-        </div>
+      <div class="rating-modals__comment">
+        <textarea placeholder="Kommentar" />
       </div>
 
-      <div class="rating-modals-point">
-        <span>Zusammenarbeit</span>
-        <div class="rating-modals-point__stars">
-          <EmptyStarSvg v-for="(item, index) in 5" :key="index" />
-        </div>
+      <div class="rating-modals__buttons">
+        <button>ZURÜCK</button>
+        <button>ABSCHICKEN</button>
       </div>
-
-      <div class="rating-modals-point">
-        <span>Zusammenarbeit</span>
-        <div class="rating-modals-point__stars">
-          <EmptyStarSvg v-for="(item, index) in 5" :key="index" />
-        </div>
-      </div>
-    </div>
-
-    <div class="rating-modals__comment">
-      <textarea placeholder="Kommentar" />
-    </div>
-
-    <div class="rating-modals__buttons">
-      <button>ZURÜCK</button>
-      <button>ABSCHICKEN</button>
     </div>
   </div>
 </template>
@@ -54,8 +56,22 @@ export default {
 
 <style lang="scss" scoped>
 .rating-modals {
-  max-width: 544px;
-  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  &__container {
+    max-width: 544px;
+    margin: 0 auto;
+  }
 
   &__title {
     font-size: 2.6rem;

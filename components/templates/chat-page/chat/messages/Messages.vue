@@ -60,6 +60,10 @@ export default {
   height: 100%;
   padding: 2.8rem 11.2rem;
 
+  @media (max-width: 1440px) {
+    padding: 2rem 7rem;
+  }
+
   .message {
     &:last-child {
       margin-bottom: 0;

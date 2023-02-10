@@ -113,9 +113,9 @@ export default {
 <style lang="scss" scoped>
 .chat-settings {
   position: absolute;
-  left: 0;
+  width: 448px;
   right: 0;
-  top: 100%;
+  top: calc(100% - 1.3rem);
   padding: 3.2rem 2.4rem;
   background: #fff;
   box-shadow: 0 8px 16px #11111129;
@@ -128,6 +128,10 @@ export default {
   &.active {
     opacity: 1;
     pointer-events: auto;
+  }
+
+  @media (max-width: 1440px) {
+    right: 3rem;
   }
 
   &__header {

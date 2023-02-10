@@ -52,6 +52,10 @@ export default {
   position: relative;
   margin-bottom: 2rem;
 
+  @media (max-width: 1440px) {
+    max-width: 600px;
+  }
+
   &.my-message {
     flex-direction: row-reverse;
     margin-left: auto;
@@ -101,6 +105,12 @@ export default {
       font-size: 1.7rem;
       padding: 2.4rem;
       line-height: 2.8rem;
+
+      @media (max-width: 1440px) {
+        font-size: 1.5rem;
+        line-height: 24px;
+        padding: 1.6rem;
+      }
     }
 
     img {
