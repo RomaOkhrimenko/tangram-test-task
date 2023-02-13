@@ -1,20 +1,18 @@
 <template>
-  <div class="contacts" :class="{ active: !isShowMenu }">
-    <ContactsHeader
-      @handleShowMenu="handleShowMenu"
-      @handleTab="handleTab"
-      :currentTab="tab"
-    />
-    <div v-if="tab === 'chat'" class="contacts__container">
-      <ContactsGroup title="Private Gruppen" />
-      <ContactsGroup title="Persönlicher Chat" />
-    </div>
+  <div class="contacts" :class="{ active: !getShowChatMenuStatus }">
+    <div class="contacts__wrapper" :class="{ active: !getShowChatMenuStatus }">
+      <ContactsHeader @handleTab="handleTab" :currentTab="tab" />
+      <div v-if="tab === 'chat'" class="contacts__container">
+        <ContactsGroup title="Private Gruppen" />
+        <ContactsGroup title="Persönlicher Chat" />
+      </div>
 
-    <div v-if="tab === 'contacts'" class="contacts__container">
-      <Contact />
-      <Contact />
-      <Contact />
-      <Contact />
+      <div v-if="tab === 'contacts'" class="contacts__container">
+        <Contact />
+        <Contact />
+        <Contact />
+        <Contact />
+      </div>
     </div>
   </div>
 </template>
@@ -23,11 +21,10 @@
 import ContactsHeader from '@/components/templates/chat-page/chat-navigation/contacts/contacts-header/ContactsHeader.vue'
 import ContactsGroup from '@/components/templates/chat-page/chat-navigation/contacts/contacts-group/ContactsGroup.vue'
 import Contact from '@/components/templates/chat-page/chat-navigation/contacts/blocks/Contact.vue'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   components: { Contact, ContactsGroup, ContactsHeader },
-
-  props: ['isShowMenu'],
 
   data() {
     return {
@@ -36,28 +33,39 @@ export default {
   },
 
   methods: {
-    handleShowMenu(status) {
-      this.$emit('handleShowMenu', status)
-    },
+    ...mapMutations('chat', ['handleShowChatMenu']),
     handleTab(tab) {
       this.tab = tab
     }
+  },
+
+  computed: {
+    ...mapGetters('chat', ['getShowChatMenuStatus'])
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .contacts {
-  transform: translateX(-100%);
-  transition: transform 0.5s, opacity 0.3s;
+  background-color: #fff;
+  transition: background-color 0.5s;
+  &.active {
+    background-color: transparent;
+
+    @media (max-width: 992px) {
+      background-color: #fff;
+    }
+  }
+
   @media (max-width: 992px) {
     background-color: #fff;
     border-right: 2px solid #d9d9d9;
   }
 
-  &.active {
-    transform: translateX(0);
+  @media (max-width: 767px) {
+    border: 0;
   }
+
   &__container {
     overflow-y: auto;
     padding: 0 2.4rem;

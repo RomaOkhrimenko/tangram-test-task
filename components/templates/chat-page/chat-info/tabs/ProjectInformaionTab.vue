@@ -73,6 +73,7 @@ export default {
 
 <style lang="scss" scoped>
 .project-information {
+  overflow-x: hidden;
   svg {
     transform: scale(1.1);
   }

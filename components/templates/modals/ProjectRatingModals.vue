@@ -38,8 +38,10 @@
       </div>
 
       <div class="rating-modals__buttons">
-        <button>ZURÜCK</button>
-        <button>ABSCHICKEN</button>
+        <button @click="handleClosedProjectModalStatus(false)">ZURÜCK</button>
+        <button @click="handleClosedProjectModalStatus(false)">
+          ABSCHICKEN
+        </button>
       </div>
     </div>
   </div>
@@ -47,31 +49,21 @@
 
 <script>
 import { EmptyStarSvg } from '~/assets/images/svg'
+import { mapMutations } from 'vuex'
 export default {
   components: {
     EmptyStarSvg
+  },
+
+  methods: {
+    ...mapMutations('chat', ['handleClosedProjectModalStatus'])
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .rating-modals {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  pointer-events: none;
-  &__container {
-    max-width: 544px;
-    margin: 0 auto;
-  }
+  width: 544px;
 
   &__title {
     font-size: 2.6rem;

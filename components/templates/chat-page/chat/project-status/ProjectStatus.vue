@@ -1,6 +1,7 @@
 <template>
   <div
     class="project-status"
+    :class="{ active: isShowOption }"
     @mouseover="handleShowOption(true)"
     @mouseleave="handleShowOption(false)"
   >
@@ -19,39 +20,28 @@
       <div class="project-status-menu__title">
         <h3>Projekt-Status</h3>
       </div>
-      <div
-        class="project-status-menu__option"
-        :class="status === 'offene' ? 'active' : ''"
-        @click="handleChosenStatus('offene')"
+
+      <ProjectStatusOption
+        :status="status === 'offene'"
+        @handleChosenStatus="handleChosenStatus"
+        :name="'offene'"
       >
-        <label>
-          <div>
-            <UnlockSvg />
-            <span>Offene</span>
-          </div>
+        <div slot="status">
+          <UnlockSvg />
+          <span>Offene</span>
+        </div>
+      </ProjectStatusOption>
 
-          <span class="checkmark">
-            <CheckSvg />
-          </span>
-        </label>
-      </div>
-
-      <div
-        class="project-status-menu__option"
-        :class="status === 'closed' ? 'active' : ''"
-        @click="handleChosenStatus('closed')"
+      <ProjectStatusOption
+        :status="status === 'closed'"
+        @handleChosenStatus="handleChosenStatus"
+        :name="'closed'"
       >
-        <label>
-          <div>
-            <LockSvg />
-            <span>Offene</span>
-          </div>
-
-          <span class="checkmark">
-            <CheckSvg />
-          </span>
-        </label>
-      </div>
+        <div slot="status">
+          <LockSvg />
+          <span>Closed</span>
+        </div>
+      </ProjectStatusOption>
     </div>
   </div>
 </template>
@@ -64,9 +54,12 @@ import {
   LockSvg,
   CloseCircle,
   CheckSvg
-} from '~/assets/images/svg'
+} from 'assets/images/svg'
+import ProjectStatusOption from '@/components/templates/chat-page/chat/project-status/ProjectStatusOption.vue'
+import { mapMutations } from 'vuex'
 export default {
   components: {
+    ProjectStatusOption,
     UnlockSvg,
     MessageDangerSvg,
     ThreeVerticalDotSvg,
@@ -83,10 +76,14 @@ export default {
   },
 
   methods: {
+    ...mapMutations('chat', ['handleClosedProjectModalStatus']),
     handleShowOption(status) {
       this.isShowOption = status
     },
     handleChosenStatus(status) {
+      if (status === 'closed') {
+        this.handleClosedProjectModalStatus(true)
+      }
       this.status = status
     }
   }
@@ -97,12 +94,14 @@ export default {
 .project-status {
   position: relative;
 
-  &:before {
-    content: '';
-    position: absolute;
-    height: 2.4rem;
-    bottom: 100%;
-    width: 100%;
+  &.active {
+    &:before {
+      content: '';
+      position: absolute;
+      height: 2.4rem;
+      bottom: 100%;
+      width: 100%;
+    }
   }
 
   &__container {
@@ -156,7 +155,6 @@ export default {
     bottom: calc(100% + 2.4rem);
     width: 100%;
     left: 0;
-    z-index: 10;
 
     background: #fff;
     box-shadow: 0 8px 16px #11111129;

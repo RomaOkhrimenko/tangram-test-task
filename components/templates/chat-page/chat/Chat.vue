@@ -1,6 +1,6 @@
 <template>
   <div class="chat">
-    <ChatHeader @handleShowMenuStatus="handleShowMenuStatus" />
+    <ChatHeader />
     <Messages />
     <MessageInput />
   </div>
@@ -13,12 +13,7 @@ import MessageInput from '@/components/templates/chat-page/chat/message-input/Me
 import ChatMenu from '@/components/templates/chat-page/chat-navigation/chat-menu/ChatMenu.vue'
 
 export default {
-  components: { ChatMenu, MessageInput, Messages, ChatHeader },
-  methods: {
-    handleShowMenuStatus(status) {
-      this.$emit('handleShowMenuStatus', status)
-    }
-  }
+  components: { ChatMenu, MessageInput, Messages, ChatHeader }
 }
 </script>
 

@@ -1,11 +1,17 @@
 <template>
-  <div class="chat-settings" :class="isShowSettings ? 'active' : ''">
+  <div
+    class="chat-settings"
+    :class="{ active: getShowSettingsStatus || showSettings }"
+  >
     <div class="chat-settings__header">
       <div class="chat-settings__header-members">
         Mitglieder
         <span>5</span>
       </div>
-      <div class="chat-settings__header-apoint" @click="handleAppointAdmin">
+      <div
+        class="chat-settings__header-apoint"
+        @click.stop="handleAppointAdmin"
+      >
         <span v-if="!isAppointAdmin">Ernennen Sie einen Administrator</span>
 
         <div v-if="isAppointAdmin">
@@ -85,14 +91,15 @@ import ChatAvatar from '~/components/templates/blocks/ChatAvatar.vue'
 import InviteInput from '~/components/templates/chat-page/chat/invite-input/InviteInput.vue'
 import ChatSettingsClient from '~/components/templates/chat-page/chat/chat-header/ChatSettingsClient.vue'
 import { CloseSvg } from '~/assets/images/svg'
+import { mapGetters, mapMutations, mapState } from 'vuex'
 
 export default {
   components: { ChatSettingsClient, InviteInput, ChatAvatar, CloseSvg },
 
   props: {
-    isShowSettings: {
+    showSettings: {
       type: Boolean,
-      required: true
+      required: false
     }
   },
 
@@ -102,9 +109,34 @@ export default {
     }
   },
 
+  computed: {
+    ...mapGetters('chat', ['getShowSettingsStatus'])
+  },
+
+  watch: {
+    getShowSettingsStatus() {
+      if (this.getShowSettingsStatus) {
+        setTimeout(
+          () => window.addEventListener('click', this.handleSettingsStatus),
+          0
+        )
+      } else {
+        window.removeEventListener('click', this.handleSettingsStatus)
+      }
+    }
+  },
+
   methods: {
+    ...mapMutations('chat', ['handleShowSettings']),
     handleAppointAdmin() {
       this.isAppointAdmin = !this.isAppointAdmin
+    },
+
+    handleSettingsStatus(e) {
+      console.log('click')
+      if (!e.target.closest('.chat-settings')) {
+        this.handleShowSettings(false)
+      }
     }
   }
 }
@@ -166,11 +198,13 @@ export default {
     &-apoint {
       cursor: pointer;
       user-select: none;
+      text-align: right;
 
       & > span {
         font-size: 1.2rem;
         line-height: 16px;
         color: #007aff;
+        text-align: right;
       }
 
       div {

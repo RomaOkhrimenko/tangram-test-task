@@ -127,7 +127,6 @@ export default {
     background: rgba(111, 111, 111, 0.24);
     padding: 0.8rem;
     border-radius: 50%;
-    margin-right: 1rem;
     color: #fff;
     cursor: pointer;
     border: 0;
@@ -148,6 +147,8 @@ export default {
     z-index: 2;
     display: flex;
     align-items: center;
+    margin-left: 1rem;
+    margin-right: -1rem;
   }
 
   &__time {

@@ -39,6 +39,7 @@ export default {}
     line-height: 32px;
     color: #fff;
     margin-bottom: 2rem;
+    font-weight: 600;
   }
 
   &__description {
@@ -56,6 +57,7 @@ export default {}
       border: 0;
       font-size: 1.7rem;
       line-height: 20px;
+      font-weight: 700;
     }
   }
 }

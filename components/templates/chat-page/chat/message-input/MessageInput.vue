@@ -55,7 +55,7 @@ import {
   MessageDangerSvg,
   WorkMicrophoneSvg
 } from '~/assets/images/svg'
-import ProjectStatus from '@/components/templates/chat-page/chat/message-input/ProjectStatus.vue'
+import ProjectStatus from '@/components/templates/chat-page/chat/project-status/ProjectStatus.vue'
 import Microphone from '@/components/templates/chat-page/chat/message-input/Microphone.vue'
 export default {
   components: {
@@ -91,9 +91,13 @@ export default {
   &-container {
     margin: 0 3.2rem;
     background-color: #fff;
-    box-shadow: 0px 8px 16px #11111129;
+    box-shadow: 0 8px 16px #11111129;
     border-radius: 20px;
     padding: 0.8rem;
+
+    @media (max-width: 554px) {
+      margin: 0 1rem;
+    }
   }
   &-top {
     display: flex;
@@ -101,6 +105,10 @@ export default {
     align-items: center;
     padding-bottom: 0.8rem;
     border-bottom: 1px solid #dcdcdc;
+
+    @media (max-width: 994px) {
+      display: none;
+    }
   }
 
   &-customize {
@@ -159,12 +167,28 @@ export default {
     display: flex;
     align-items: center;
     margin-top: 0.8rem;
+
+    @media (max-width: 767px) {
+      margin-top: 0;
+    }
+
+    .record {
+      @media (max-width: 554px) {
+        margin-right: 0.5rem;
+        transform: scale(0.8);
+        z-index: 10;
+      }
+    }
   }
 
   &__input {
     width: 100%;
     margin-right: 1rem;
     position: relative;
+
+    @media (max-width: 554px) {
+      margin-right: 0.5rem;
+    }
 
     .hide {
       position: absolute;
@@ -187,6 +211,10 @@ export default {
       color: #111;
       outline: none;
       border: none;
+
+      @media (max-width: 554px) {
+        padding: 0;
+      }
     }
   }
 
@@ -205,6 +233,11 @@ export default {
       background-color: #007aff;
       color: #fff;
     }
+
+    @media (max-width: 554px) {
+      transform: scale(0.8);
+      margin-right: 0.3rem;
+    }
   }
 
   &-sent {
@@ -213,6 +246,10 @@ export default {
     border-radius: 50%;
     padding: 1.1rem 0.9rem 1.1rem 1.3rem;
     cursor: pointer;
+
+    @media (max-width: 554px) {
+      transform: scale(0.8);
+    }
   }
 }
 </style>

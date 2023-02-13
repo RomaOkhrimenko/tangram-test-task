@@ -17,7 +17,10 @@
         </button>
       </div>
       <div>
-        <button @click="handleShowMenu" class="contacts-header-btn">
+        <button @click="handleShowMenu(false)" class="contacts-header-back">
+          <LeftArrowSvg />
+        </button>
+        <button @click="handleShowChatMenu(true)" class="contacts-header-btn">
           <BurgerMenuSvg />
         </button>
       </div>
@@ -30,9 +33,10 @@
 
 <script>
 import ContactsInput from '@/components/templates/chat-page/chat-navigation/contacts/contacts-header/ContactsInput.vue'
-import { BurgerMenuSvg } from '~/assets/images/svg'
+import { BurgerMenuSvg, LeftArrowSvg } from '~/assets/images/svg'
+import { mapMutations } from 'vuex'
 export default {
-  components: { ContactsInput, BurgerMenuSvg },
+  components: { ContactsInput, BurgerMenuSvg, LeftArrowSvg },
 
   props: {
     currentTab: {
@@ -42,10 +46,7 @@ export default {
   },
 
   methods: {
-    handleShowMenu() {
-      console.log('click')
-      this.$emit('handleShowMenu', true)
-    },
+    ...mapMutations('chat', ['handleShowMenu', 'handleShowChatMenu']),
 
     handleTab(tab) {
       this.$emit('handleTab', tab)
@@ -101,6 +102,22 @@ export default {
     &:hover {
       background-color: #111111;
       color: #fff;
+    }
+  }
+
+  &-back {
+    padding: 0.8rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+
+    @media (min-width: 993px) {
+      display: none;
+    }
+    svg {
+      height: 24px;
+      width: 24px;
     }
   }
 }

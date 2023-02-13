@@ -64,6 +64,10 @@ export default {
     padding: 2rem 7rem;
   }
 
+  @media (max-width: 554px) {
+    padding: 2rem 2rem;
+  }
+
   .message {
     &:last-child {
       margin-bottom: 0;

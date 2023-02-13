@@ -1,6 +1,6 @@
 <template>
   <div
-    @click="onClick"
+    @click="handleCurrentTab(link)"
     class="chat-menu-navigate"
     :class="`${isActive ? 'active' : ''} ${isAnimate ? 'animate' : ''}`"
   >
@@ -13,12 +13,9 @@
 
 <script>
 import SvgLogo from '~/assets/images/svg/user-octagon.svg?inline'
+import { mapMutations } from 'vuex'
 export default {
   props: {
-    // svg: {
-    //   type: HTMLElement,
-    //   required: true
-    // }
     title: {
       type: String,
       required: true
@@ -38,9 +35,7 @@ export default {
   },
   components: { SvgLogo },
   methods: {
-    onClick() {
-      this.$emit('changeTab', this.link)
-    }
+    ...mapMutations('chat', ['handleCurrentTab'])
   }
 }
 </script>

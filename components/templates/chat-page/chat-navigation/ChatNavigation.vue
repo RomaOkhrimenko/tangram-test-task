@@ -1,12 +1,7 @@
 <template>
-  <div class="chat-navigation active">
-    <ChatMenu
-      :isShowMenu="isShowMenu"
-      @changeTab="changeTab"
-      @handleShowMenu="handleShowMenu"
-      :currentTab="tab"
-    />
-    <Contacts @handleShowMenu="handleShowMenu" :isShowMenu="isShowMenu" />
+  <div class="chat-navigation">
+    <ChatMenu />
+    <Contacts />
   </div>
 </template>
 
@@ -16,47 +11,32 @@ import Contacts from '@/components/templates/chat-page/chat-navigation/contacts/
 import ChatCatalog from '@/components/templates/chat-page/chat-catalog/ChatCatalog.vue'
 
 export default {
-  components: { ChatCatalog, Contacts, ChatMenu },
-
-  data() {
-    return {
-      tab: 'chat',
-      isShowMenu: true
-    }
-  },
-
-  methods: {
-    changeTab(tab) {
-      this.tab = tab
-      if (this.tab === 'chat') {
-        this.isShowMenu = false
-      }
-    },
-
-    handleShowMenu(status) {
-      console.log('handleShowMenu', status)
-      this.isShowMenu = status
-      this.tab = 'chat'
-    }
-  }
+  components: { ChatCatalog, Contacts, ChatMenu }
 }
 </script>
 
 <style lang="scss" scoped>
 .chat-navigation {
   max-width: 384px;
+  width: 100%;
   position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
   &::-webkit-scrollbar {
     width: 0;
-  }
-
-  &.active {
-    width: 100%;
   }
 
   @media (max-width: 1440px) {
     min-width: 305px;
     max-width: 305px;
+  }
+
+  @media (max-width: 994px) {
+    max-width: 500px;
+  }
+
+  @media (max-width: 767px) {
+    max-width: 800px;
   }
 }
 </style>

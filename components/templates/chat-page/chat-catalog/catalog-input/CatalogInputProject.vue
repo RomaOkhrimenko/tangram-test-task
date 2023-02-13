@@ -84,9 +84,6 @@ export default {
     handleInputFile(e) {
       this.fileName = cutString(e.target.files[0].name, 20)
     }
-  },
-  created() {
-    console.log(this.options)
   }
 }
 </script>

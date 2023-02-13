@@ -1,5 +1,9 @@
 <template>
-  <div class="modal" :class="{ active: isActive }" @click="hideModal">
+  <div
+    class="modal"
+    :class="{ active: isActive, white: isWhite }"
+    @click="hideModal"
+  >
     <div class="modal-wrapper" @click.stop>
       <slot></slot>
     </div>
@@ -12,6 +16,11 @@ export default {
     isActive: {
       type: Boolean,
       required: true
+    },
+    isWhite: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
   methods: {
@@ -30,7 +39,7 @@ export default {
   background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
   height: 100%;
-  z-index: 100000;
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,11 +56,16 @@ export default {
     }
   }
 
+  &.white {
+    background-color: rgba(255, 255, 255, 0.98);
+  }
+
   .modal-wrapper {
     display: flex;
     justify-content: center;
     transform: scale(0);
     transition: transform 0.3s;
+    margin: 0 2rem;
   }
 }
 </style>

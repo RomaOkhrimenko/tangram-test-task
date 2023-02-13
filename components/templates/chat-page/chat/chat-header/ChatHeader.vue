@@ -1,10 +1,7 @@
 <template>
   <div class="chat-header">
     <div class="chat-header-left">
-      <div
-        class="chat-header__menu d-m-none-lg"
-        @click="handleShowMenuStatus(true)"
-      >
+      <div class="chat-header__menu d-m-none-lg" @click="handleShowMenu(true)">
         <BurgerMenuSvg />
       </div>
 
@@ -25,26 +22,26 @@
       <div class="chat-header-right__line" />
       <button
         class="chat-header-right__params d-none-xxl"
-        :class="isShowParams ? 'active' : ''"
-        @click="handleShowParams"
+        :class="getShowSettingsStatus ? 'active' : ''"
+        @click="handleSettingsStatus(!getShowSettingsStatus)"
       >
         <SettingFill />
       </button>
 
       <button
         class="chat-header-right__settings d-m-none-xl"
-        :class="isShowSettings ? 'active' : ''"
-        @click="handleShowSettings"
+        :class="getShowMoreStatus ? 'active' : ''"
+        @click="handleShowMore(!getShowMoreStatus)"
       >
         <ThreeVerticalDotSvg />
       </button>
     </div>
 
-    <ChatSettings class="d-none-xxl" :isShowSettings="isShowParams" />
+    <ChatSettings class="d-none-xxl" />
 
     <div
       class="chat-header-settings d-m-none-xl"
-      :class="{ active: isShowSettings }"
+      :class="{ active: getShowMoreStatus }"
     >
       <span @click="handleShowChatInfo(true)"><SettingEmpty />Info</span>
     </div>
@@ -73,6 +70,7 @@ import ChatMembers from '@/components/templates/chat-page/chat/chat-header/ChatM
 import ChatSettings from '~/components/templates/chat-page/chat/chat-header/ChatSettings.vue'
 import ModalWrapper from '@/components/templates/modals/ModalWrapper.vue'
 import ChatInfo from '@/components/templates/chat-page/chat-info/ChatInfoModal.vue'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   components: {
@@ -92,28 +90,47 @@ export default {
 
   data() {
     return {
-      isShowParams: false,
       isShowSettings: false,
       isShowChatInfo: false
     }
   },
 
+  watch: {
+    getShowMoreStatus() {
+      if (this.getShowMoreStatus) {
+        setTimeout(
+          () => window.addEventListener('click', this.checkClickMore),
+          0
+        )
+      } else {
+        window.removeEventListener('click', this.checkClickMore)
+      }
+    }
+  },
+
+  computed: {
+    ...mapGetters('chat', ['getShowSettingsStatus', 'getShowMoreStatus'])
+  },
+
   methods: {
-    handleShowParams() {
-      this.isShowParams = !this.isShowParams
+    ...mapMutations('chat', [
+      'handleShowSettings',
+      'handleShowMore',
+      'handleShowMenu'
+    ]),
+    handleSettingsStatus(status) {
+      this.handleShowSettings(status)
     },
-    handleShowSettings() {
-      this.isShowSettings = !this.isShowSettings
+
+    checkClickMore(e) {
+      if (!e.target.closest('.chat-header-settings')) {
+        this.handleShowMore(false)
+      }
     },
+
     handleShowChatInfo(bool) {
-      this.isShowSettings = false
+      this.handleShowMore(false)
       this.isShowChatInfo = bool
-    },
-    handleModalStatus() {
-      this.isShowSettings = false
-    },
-    handleShowMenuStatus(status) {
-      this.$emit('handleShowMenuStatus', status)
     }
   }
 }
@@ -140,11 +157,20 @@ export default {
       margin-left: 1.6rem;
       margin-right: 1.5rem;
 
+      @media (max-width: 554px) {
+        margin: 0 1rem;
+      }
+
       h3 {
         font-size: 2rem;
         line-height: 24px;
         margin-bottom: 0.8rem;
         font-weight: 500;
+
+        @media (max-width: 554px) {
+          font-size: 1.4rem;
+          margin-bottom: 0;
+        }
       }
 
       a {
@@ -152,6 +178,10 @@ export default {
         line-height: 16px;
         text-decoration: underline;
         color: #007aff;
+
+        @media (max-width: 554px) {
+          font-size: 1rem;
+        }
 
         b {
           font-weight: 500;
@@ -165,6 +195,10 @@ export default {
       background-color: #d9d9d9;
       margin-right: 3.2rem;
       margin-left: 3.6rem;
+
+      @media (max-width: 554px) {
+        margin: 0 1.5rem;
+      }
     }
   }
 
@@ -185,20 +219,26 @@ export default {
       background-color: #d9d9d9;
       margin-right: 3.6rem;
       margin-left: 3.2rem;
+
+      @media (max-width: 554px) {
+        margin: 0 1.5rem;
+      }
     }
 
     &__params {
-      padding: 0.8rem;
       cursor: pointer;
       transition: background-color 0.3s, transform 0.3s;
       border-radius: 8px;
       border: none;
 
-      &:hover {
-        background-color: rgba(111, 111, 111, 0.08);
+      @media (min-width: 1024px) {
+        padding: 0.8rem;
+        &:hover {
+          background-color: rgba(111, 111, 111, 0.08);
 
-        svg {
-          transform: rotate(60deg);
+          svg {
+            transform: rotate(60deg);
+          }
         }
       }
 
@@ -223,8 +263,10 @@ export default {
       border-radius: 8px;
       border: none;
 
-      &:hover {
-        background-color: rgba(111, 111, 111, 0.08);
+      @media (min-width: 1024px) {
+        &:hover {
+          background-color: rgba(111, 111, 111, 0.08);
+        }
       }
 
       &.active {
@@ -241,7 +283,7 @@ export default {
     position: absolute;
     right: 3.6rem;
     background-color: #fff;
-    top: calc(100% - 2rem);
+    top: 90%;
     display: flex;
     flex-direction: column;
     z-index: 10;
@@ -252,6 +294,10 @@ export default {
     opacity: 0;
     transform: scale(0.8);
     transition: opacity 0.3s, transform 0.3s;
+
+    @media (max-width: 554px) {
+      top: 90%;
+    }
 
     &.active {
       opacity: 1;

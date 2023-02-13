@@ -111,6 +111,12 @@ export default {
         line-height: 24px;
         padding: 1.6rem;
       }
+
+      @media (max-width: 554px) {
+        padding: 1.2rem;
+        font-size: 1.3rem;
+        line-height: 2rem;
+      }
     }
 
     img {
@@ -124,6 +130,10 @@ export default {
 
   &__time {
     margin-top: 2rem;
+
+    @media (max-width: 554px) {
+      margin-top: 0;
+    }
   }
 
   & > svg {
@@ -131,6 +141,10 @@ export default {
     top: 0;
     right: -4rem;
     cursor: pointer;
+
+    @media (max-width: 554px) {
+      display: none;
+    }
   }
 }
 </style>

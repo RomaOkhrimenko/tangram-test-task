@@ -19,11 +19,19 @@
     <div class="chat-info-tabs">
       <div class="chat-info-tabs__tab" @click="handleTab('information')">
         <NoteLockSvg />
-        <span>Project Information</span>
+        <span>Projekt Information</span>
       </div>
       <div class="chat-info-tabs__tab" @click="handleTab('catalog')">
         <FolderOpenSvg />
         <span>Katalog</span>
+      </div>
+      <div class="chat-info-tabs__tab" @click="handleTab('project-status')">
+        <LockSvg />
+        <span>Projekt Status</span>
+      </div>
+      <div class="chat-info-tabs__tab" @click="handleTab('report')">
+        <MessageDangerSvg />
+        <span>Vorfall Meiden</span>
       </div>
     </div>
 
@@ -46,10 +54,20 @@ import {
   FolderOpenSvg,
   NoteLockSvg,
   ShareSvg,
-  SettingEmpty
+  SettingEmpty,
+  LockSvg,
+  MessageDangerSvg
 } from '~/assets/images/svg'
 export default {
-  components: { CloseSvg, FolderOpenSvg, NoteLockSvg, ShareSvg, SettingEmpty },
+  components: {
+    CloseSvg,
+    FolderOpenSvg,
+    LockSvg,
+    NoteLockSvg,
+    ShareSvg,
+    SettingEmpty,
+    MessageDangerSvg
+  },
   methods: {
     handleTab(status) {
       this.$emit('handleTab', status)
@@ -92,17 +110,31 @@ export default {
         margin-right: 2rem;
         box-shadow: 0 0 10px #007b29;
         border-radius: 50%;
+
+        @media (max-width: 554px) {
+          width: 75px;
+          height: 75px;
+        }
       }
 
       div {
         h3 {
           font-size: 2rem;
           margin-bottom: 1rem;
+
+          @media (max-width: 554px) {
+            font-size: 1.7rem;
+            margin-bottom: 0.5rem;
+          }
         }
 
         span {
           color: #007b29;
           font-size: 1.3rem;
+
+          @media (max-width: 554px) {
+            font-size: 1.1rem;
+          }
         }
       }
     }

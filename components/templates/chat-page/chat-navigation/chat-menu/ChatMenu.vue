@@ -1,5 +1,5 @@
 <template>
-  <div class="chat-menu" :class="{ active: isShowMenu }">
+  <div class="chat-menu" :class="{ active: getShowChatMenuStatus }">
     <div class="chat-menu-header">
       <div class="chat-menu-header__user">
         <div class="chat-menu-header__user-img">
@@ -17,7 +17,10 @@
       </div>
 
       <div>
-        <button @click="handleShowMenu" class="chat-menu-header__close">
+        <button
+          @click="handleShowChatMenu(false)"
+          class="chat-menu-header__close"
+        >
           <CloseSvg />
         </button>
       </div>
@@ -25,10 +28,9 @@
 
     <div class="chat-menu-navigates">
       <ChatMenuNavigate
-        @changeTab="changeTab"
         title="Chat"
         link="chat"
-        :isActive="'chat' === currentTab"
+        :isActive="'chat' === getCurrentTab"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -61,10 +63,9 @@
           </g></svg
       ></ChatMenuNavigate>
       <ChatMenuNavigate
-        @changeTab="changeTab"
         title="Neue Gruppe"
         link="neue-gruppe"
-        :isActive="'neue-gruppe' === currentTab"
+        :isActive="'neue-gruppe' === getCurrentTab"
       >
         <svg
           id="profile-2user"
@@ -129,10 +130,9 @@
         </svg>
       </ChatMenuNavigate>
       <ChatMenuNavigate
-        @changeTab="changeTab"
         title="Kontakte"
         link="kontakte"
-        :isActive="'kontakte' === currentTab"
+        :isActive="'kontakte' === getCurrentTab"
       >
         <svg
           id="user-octagon"
@@ -186,11 +186,10 @@
         </svg>
       </ChatMenuNavigate>
       <ChatMenuNavigate
-        @changeTab="changeTab"
         title="Parameter"
         link="parameter"
         :isAnimate="true"
-        :isActive="'parameter' === currentTab"
+        :isActive="'parameter' === getCurrentTab"
       >
         <svg
           id="setting-2"
@@ -237,33 +236,22 @@
 <script>
 import Messages from '~/assets/images/svg/messages-2.svg'
 import ChatMenuNavigate from '@/components/templates/chat-page/chat-navigation/chat-menu/ChatMenuNavigate.vue'
-import { CloseSvg } from '~/assets/images/svg'
+import { CloseSvg, LeftArrowSvg } from '~/assets/images/svg'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   components: {
     ChatMenuNavigate,
     Messages,
-    CloseSvg
-  },
-
-  props: {
-    currentTab: {
-      type: String,
-      required: true
-    },
-    isShowMenu: {
-      type: Boolean,
-      required: true
-    }
+    CloseSvg,
+    LeftArrowSvg
   },
 
   methods: {
-    changeTab(tab) {
-      this.$emit('changeTab', tab)
-    },
-    handleShowMenu() {
-      this.$emit('handleShowMenu', false)
-    }
+    ...mapMutations('chat', ['handleShowChatMenu'])
+  },
+  computed: {
+    ...mapGetters('chat', ['getCurrentTab', 'getShowChatMenuStatus'])
   }
 }
 </script>
@@ -275,13 +263,17 @@ export default {
   width: 100%;
   background-color: #fdfdfd;
   height: 100%;
-  z-index: 3;
   transition: transform 0.5s, opacity 0.3s;
   transform: translateX(-100%);
   pointer-events: none;
+  z-index: 11;
 
   @media (max-width: 992px) {
     border-right: 2px solid #d9d9d9;
+  }
+
+  @media (max-width: 767px) {
+    border: 0;
   }
 
   &.active {

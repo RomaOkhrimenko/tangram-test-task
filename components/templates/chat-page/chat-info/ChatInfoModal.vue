@@ -8,7 +8,8 @@
     />
     <ProjectInformaionTab v-if="tab === 'information'" />
     <ProjectCatalogTab v-if="tab === 'catalog'" />
-    <ChatSettings v-if="tab === 'settings'" :isShowSettings="true" />
+    <ProjectStatusTab v-if="tab === 'project-status'" />
+    <ChatSettings v-if="tab === 'settings'" :show-settings="true" />
   </div>
 </template>
 
@@ -25,8 +26,11 @@ import ChatInfoMain from '@/components/templates/chat-page/chat-info/tabs/ChatIn
 import ChatInfoTabHeader from '@/components/templates/chat-page/chat-info/tabs/ChatInfoTabHeader.vue'
 import ProjectCatalogTab from '@/components/templates/chat-page/chat-info/tabs/ProjectCatalogTab.vue'
 import ChatSettings from '@/components/templates/chat-page/chat/chat-header/ChatSettings.vue'
+import ProjectStatusTab from '@/components/templates/chat-page/chat-info/tabs/ProjectStatusTab.vue'
+import { mapMutations } from 'vuex'
 export default {
   components: {
+    ProjectStatusTab,
     ChatSettings,
     ProjectCatalogTab,
     ChatInfoTabHeader,
@@ -70,9 +74,17 @@ export default {
   overflow-y: auto;
   position: relative;
 
+  @media (max-width: 554px) {
+    width: 355px;
+  }
+
+  @media (max-width: 350px) {
+    width: 310px;
+  }
+
   .chat-settings {
     margin-top: 3.2rem;
-    padding: 0;
+    padding: 0 1rem;
     position: static;
     right: 0;
     top: 0;
