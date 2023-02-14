@@ -21,6 +21,12 @@
     >
       <ProjectRatingModals />
     </ModalWrapper>
+
+    <div>
+      <client-only>
+        <tiptap-editor />
+      </client-only>
+    </div>
   </div>
 </template>
 
@@ -32,6 +38,7 @@ import Debate from '@/components/templates/chat-page/chat/debate/Debate.vue'
 import DebateMessage from '@/components/templates/chat-page/chat/messages/DebateMessage.vue'
 import { mapGetters, mapMutations } from 'vuex'
 import ModalWrapper from '@/components/templates/modals/ModalWrapper.vue'
+import TiptapEditor from '@/components/templates/tiptap-editor/TiptapEditor.vue'
 
 export default {
   components: {
@@ -40,14 +47,17 @@ export default {
     Debate,
     ChatCongratiulationsAlert,
     ProjectRatingModals,
-    InputDropdown
+    InputDropdown,
+    TiptapEditor
   },
 
   data() {
     return {
       isShowCongratulations: false,
       isShowClosedProject: false,
-      isSoMessage: false
+      isSoMessage: false,
+      content:
+        '<p>A Vue.js wrapper component for tiptap to use <code>v-model</code>.</p>'
     }
   },
 

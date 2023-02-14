@@ -29,6 +29,17 @@ import EmptyStarSvg from './empty-star.svg?inline'
 import WorkMicrophoneSvg from './work-microphone.svg?inline'
 import ShareSvg from './share.svg?inline'
 import LeftArrowSvg from './left-arrow.svg?inline'
+import ItalicFormatSvg from './italic-format.svg?inline'
+import BoldFormatSvg from './bold-format.svg?inline'
+import BaselineFormatCenter from './baseline-format-center.svg?inline'
+import BaselineFormatLeft from './baseline-format-left.svg?inline'
+import BaselineFormatRight from './baseline-format-right.svg?inline'
+import BaseLineFormatJustify from './baseline-justify.svg?inline'
+import UnderlinedFormatSvg from './format-underlined.svg?inline'
+import StrikeTroughFormat from './format-strikethrough.svg?inline'
+import QuoteSvg from './quote.svg?inline'
+import BulletListSvg from './bullet-list.svg?inline'
+import NumberListSvg from './number-list.svg?inline'
 
 export {
   CloseSvg,
@@ -61,5 +72,16 @@ export {
   EmptyStarSvg,
   WorkMicrophoneSvg,
   ShareSvg,
-  LeftArrowSvg
+  LeftArrowSvg,
+  ItalicFormatSvg,
+  BoldFormatSvg,
+  BaselineFormatCenter,
+  BaselineFormatLeft,
+  BaselineFormatRight,
+  UnderlinedFormatSvg,
+  BaseLineFormatJustify,
+  StrikeTroughFormat,
+  QuoteSvg,
+  BulletListSvg,
+  NumberListSvg
 }

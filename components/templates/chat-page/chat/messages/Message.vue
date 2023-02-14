@@ -7,6 +7,7 @@
           item.message
         }}</span>
         <img
+          height="360px"
           :key="item.message_image"
           v-if="item.message_image"
           :src="item.message_image"

@@ -3,7 +3,7 @@
     <div class="catalog-project">
       <div class="catalog-project__header">
         <slot name="logo"></slot>
-        {{ title }}
+        <h3>{{ title }}</h3>
 
         <div
           v-if="!isInformation"
@@ -164,8 +164,8 @@ export default {
     }
     &__header {
       display: flex;
+      flex-wrap: nowrap;
       align-items: center;
-      flex-wrap: wrap;
       font-size: 2rem;
       line-height: 24px;
       color: #111;
@@ -180,6 +180,12 @@ export default {
 
       svg {
         margin-right: 0.8rem;
+        flex: none;
+      }
+
+      h3 {
+        //min-width: 220px;
+        white-space: nowrap;
       }
 
       &-options {

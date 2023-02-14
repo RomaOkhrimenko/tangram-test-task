@@ -2,11 +2,7 @@
   <div class="message-input">
     <div class="message-input-container">
       <div class="message-input-top">
-        <div class="message-input-customize">
-          <div class="message-input-customize__opener">
-            <PlusSvg />
-          </div>
-        </div>
+        <TextEditor @editText="handleTextStyle" />
 
         <div class="message-input-options">
           <div class="message-input-report">
@@ -22,18 +18,24 @@
           @handleMicrophoneStatus="handleMicrophoneStatus"
           :microphoneStatus="microphoneStatus"
         />
-        <div class="message-input__input">
+        <div class="message-input__field">
           <div
             class="hide"
             :class="{
               animate: microphoneStatus === 'on' || microphoneStatus === 'stop'
             }"
           ></div>
-          <input
+          <editor-content
+            class="editor-content"
+            :editor="editor"
+            :aria-placeholder="'lalalal'"
             v-model="message"
-            type="text"
-            placeholder="Beginnen Sie mit dem Schreiben oder ziehen Sie Dateien in Ihre Notiz"
           />
+          <!--          <input-->
+          <!--            v-model="message"-->
+          <!--            type="text"-->
+          <!--            placeholder="Beginnen Sie mit dem Schreiben oder ziehen Sie Dateien in Ihre Notiz"-->
+          <!--          />-->
         </div>
         <div class="message-input-attachment">
           <PaperClipSvg />
@@ -55,10 +57,18 @@ import {
   MessageDangerSvg,
   WorkMicrophoneSvg
 } from '~/assets/images/svg'
+import { Editor, EditorContent } from '@tiptap/vue-2'
 import ProjectStatus from '@/components/templates/chat-page/chat/project-status/ProjectStatus.vue'
 import Microphone from '@/components/templates/chat-page/chat/message-input/Microphone.vue'
+import TextEditor from '@/components/templates/chat-page/chat/text-editor/TextEditor.vue'
+
+import TextAlign from '@tiptap/extension-text-align'
+import Underline from '@tiptap/extension-underline'
+import Strike from '@tiptap/extension-strike'
+import StarterKit from '@tiptap/starter-kit'
 export default {
   components: {
+    TextEditor,
     Microphone,
     ProjectStatus,
     SentMessageSvg,
@@ -66,19 +76,109 @@ export default {
     MicrophoneSlashSvg,
     MessageDangerSvg,
     PlusSvg,
-    WorkMicrophoneSvg
+    WorkMicrophoneSvg,
+    EditorContent
   },
 
   data() {
     return {
       message: '',
-      microphoneStatus: 'off'
+      microphoneStatus: 'off',
+      editor: null
     }
   },
   methods: {
     handleMicrophoneStatus(status) {
       this.microphoneStatus = status
+    },
+    handleTextStyle(style) {
+      if (style === 'bold') {
+        this.editor
+          .chain()
+          .focus()
+          .toggleBold()
+          .run()
+      }
+      if (style === 'italic') {
+        this.editor
+          .chain()
+          .focus()
+          .toggleItalic()
+          .run()
+      }
+      if (style === 'baseline-center') {
+        this.editor
+          .chain()
+          .focus()
+          .setTextAlign('center')
+          .run()
+      }
+      if (style === 'baseline-justify') {
+        this.editor
+          .chain()
+          .focus()
+          .setTextAlign('justify')
+          .run()
+      }
+      if (style === 'baseline-left') {
+        this.editor
+          .chain()
+          .focus()
+          .setTextAlign('left')
+          .run()
+      }
+      if (style === 'baseline-right') {
+        this.editor
+          .chain()
+          .focus()
+          .setTextAlign('right')
+          .run()
+      }
+      if (style === 'underline') {
+        this.editor
+          .chain()
+          .focus()
+          .toggleUnderline()
+          .run()
+      }
+      if (style === 'strike-trough') {
+        this.editor
+          .chain()
+          .focus()
+          .toggleStrike()
+          .run()
+      }
+      if (style === 'bullet-list') {
+        this.editor
+          .chain()
+          .focus()
+          .toggleBulletList()
+          .run()
+      }
+      if (style === 'number-list') {
+        this.editor
+          .chain()
+          .focus()
+          .toggleOrderedList()
+          .run()
+      }
     }
+  },
+
+  mounted() {
+    this.editor = new Editor({
+      extensions: [
+        Document,
+        Text,
+        StarterKit,
+        Underline,
+        Strike,
+        TextAlign.configure({
+          types: ['heading', 'paragraph']
+        })
+      ],
+      content: ``
+    })
   }
 }
 </script>
@@ -108,30 +208,6 @@ export default {
 
     @media (max-width: 994px) {
       display: none;
-    }
-  }
-
-  &-customize {
-    &__opener {
-      width: 40px;
-      height: 40px;
-      background-color: rgba(0, 122, 255, 0.16);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 20px;
-      cursor: pointer;
-      color: #007aff;
-
-      &:hover {
-        svg {
-          transform: rotate(45deg);
-        }
-      }
-
-      svg {
-        transition: transform 0.3s;
-      }
     }
   }
 
@@ -181,11 +257,14 @@ export default {
     }
   }
 
-  &__input {
+  &__field {
     width: 100%;
     margin-right: 1rem;
     position: relative;
-
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 300px;
+    overflow-y: auto;
     @media (max-width: 554px) {
       margin-right: 0.5rem;
     }
@@ -197,23 +276,10 @@ export default {
       background-color: #fff;
       width: 0;
       transition: width 1s;
+      z-index: 1;
 
       &.animate {
         width: 100%;
-      }
-    }
-    input {
-      padding: 1rem 0.5rem;
-      width: 100%;
-      height: 100%;
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: #111;
-      outline: none;
-      border: none;
-
-      @media (max-width: 554px) {
-        padding: 0;
       }
     }
   }
@@ -250,6 +316,12 @@ export default {
     @media (max-width: 554px) {
       transform: scale(0.8);
     }
+  }
+
+  .editor-content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 </style>
