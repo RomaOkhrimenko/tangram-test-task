@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/svg": "^0.4.0",
+    "@tiptap/core": "*",
     "@tiptap/extension-blockquote": "*",
     "@tiptap/extension-bold": "*",
     "@tiptap/extension-document": "*",
@@ -19,6 +20,7 @@
     "@tiptap/extension-list-item": "*",
     "@tiptap/extension-ordered-list": "*",
     "@tiptap/extension-paragraph": "*",
+    "@tiptap/extension-placeholder": "*",
     "@tiptap/extension-strike": "*",
     "@tiptap/extension-text": "*",
     "@tiptap/extension-text-align": "*",
@@ -27,6 +29,7 @@
     "@tiptap/starter-kit": "*",
     "@tiptap/vue-2": "*",
     "nuxt": "^2.0.0",
+    "swiper": "^6.8.4",
     "tiptap-extensions": "^1.35.2",
     "vuex": "^3.6.2"
   },

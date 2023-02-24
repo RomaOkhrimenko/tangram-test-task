@@ -29,6 +29,7 @@ import EmptyStarSvg from './empty-star.svg?inline'
 import WorkMicrophoneSvg from './work-microphone.svg?inline'
 import ShareSvg from './share.svg?inline'
 import LeftArrowSvg from './left-arrow.svg?inline'
+
 import ItalicFormatSvg from './italic-format.svg?inline'
 import BoldFormatSvg from './bold-format.svg?inline'
 import BaselineFormatCenter from './baseline-format-center.svg?inline'
@@ -40,6 +41,23 @@ import StrikeTroughFormat from './format-strikethrough.svg?inline'
 import QuoteSvg from './quote.svg?inline'
 import BulletListSvg from './bullet-list.svg?inline'
 import NumberListSvg from './number-list.svg?inline'
+import FormatLowercaseSvg from './format-lowercase.svg?inline'
+import FormatNormalSvg from './format-normal.svg?inline'
+import FormatUppercaseSvg from './format-uppercase.svg?inline'
+import AttachFileSvg from './attach-file.svg?inline'
+
+import ImageAddSvg from './image-add.svg?inline'
+import VideoAddSvg from './video-add.svg?inline'
+
+import ArrowLeftLongSvg from './arrow-left-long.svg?inline'
+import ArrowRightLongSvg from './arrow-right-long.svg?inline'
+
+import TransferSvg from './transfer.svg?inline'
+import RulePen from './ruler&pen.svg?inline'
+import JudgeSvg from './judge.svg?inline'
+import BoxSvg from './box.svg?inline'
+import TransportSvg from './transport.svg?inline'
+import ArrowDown from './arrow-down.svg?inline'
 
 export {
   CloseSvg,
@@ -83,5 +101,19 @@ export {
   StrikeTroughFormat,
   QuoteSvg,
   BulletListSvg,
-  NumberListSvg
+  NumberListSvg,
+  FormatLowercaseSvg,
+  FormatNormalSvg,
+  FormatUppercaseSvg,
+  AttachFileSvg,
+  ImageAddSvg,
+  VideoAddSvg,
+  ArrowLeftLongSvg,
+  ArrowRightLongSvg,
+  TransferSvg,
+  RulePen,
+  JudgeSvg,
+  BoxSvg,
+  TransportSvg,
+  ArrowDown
 }

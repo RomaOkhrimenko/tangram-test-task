@@ -1,0 +1,10 @@
+<svg id="ruler_pen" data-name="ruler&amp;pen" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <path id="Vector" d="M0,17V3A2.652,2.652,0,0,1,3,0H7a2.652,2.652,0,0,1,3,3V17a2.652,2.652,0,0,1-3,3H3A2.652,2.652,0,0,1,0,17Z" transform="translate(2.53 2)" fill="none" stroke="#007b29" stroke-linecap="round" stroke-width="2"/>
+  <path id="Vector-2" data-name="Vector" d="M5,0H0" transform="translate(7.53 6)" fill="none" stroke="#007b29" stroke-linecap="round" stroke-width="2" opacity="0.4"/>
+  <path id="Vector-3" data-name="Vector" d="M4,0H0" transform="translate(8.53 18)" fill="none" stroke="#007b29" stroke-linecap="round" stroke-width="2" opacity="0.4"/>
+  <path id="Vector-4" data-name="Vector" d="M5,0,0,.05" transform="translate(7.53 13.95)" fill="none" stroke="#007b29" stroke-linecap="round" stroke-width="2" opacity="0.4"/>
+  <path id="Vector-5" data-name="Vector" d="M3,0H0" transform="translate(9.53 10)" fill="none" stroke="#007b29" stroke-linecap="round" stroke-width="2" opacity="0.4"/>
+  <path id="Vector-6" data-name="Vector" d="M2.95,0A2.964,2.964,0,0,1,5.91,2.95V15.91a3.532,3.532,0,0,1-.42,1.52l-.82,1.36c-.94,1.57-2.49,1.57-3.43,0L.42,17.43A3.532,3.532,0,0,1,0,15.91V2.95A2.962,2.962,0,0,1,2.95,0Z" transform="translate(15.56 2)" fill="none" stroke="#007b29" stroke-linecap="round" stroke-width="2"/>
+  <path id="Vector-7" data-name="Vector" d="M0,0H5.91" transform="translate(15.56 7)" fill="none" stroke="#007b29" stroke-linecap="round" stroke-width="2" opacity="0.4"/>
+  <path id="Vector-8" data-name="Vector" d="M24,0H0V24H24Z" fill="none" opacity="0"/>
+</svg>

@@ -16,18 +16,15 @@
 </template>
 
 <script lang="js">
-import Chat from "~/components/templates/chat-page/chat/Chat.vue";
-import ChatCatalog from "~/components/templates/chat-page/chat-catalog/ChatCatalog.vue";
-import ChatNavigation from "@/components/templates/chat-page/chat-navigation/ChatNavigation.vue";
-import NewGroup from "@/components/templates/chat-page/new-group/NewGroup.vue";
-import Contacts from "@/components/templates/chat-page/contacts/Contacts.vue";
-import Parameters from "@/components/templates/chat-page/parameters/Parameters.vue";
-import ProjectRatingModals from "@/components/templates/modals/ProjectRatingModals.vue";
+import Chat from "~/modules/chat/components/messages/Chat.vue";
+import ChatCatalog from "~/modules/chat/components/chat-catalog/ChatCatalog.vue";
+import ChatNavigation from "@/modules/chat/components/chat-navigation/ChatNavigation.vue";
 import {mapGetters, mapMutations} from "vuex";
-import ModalWrapper from "@/components/templates/modals/ModalWrapper.vue";
+import ProjectRatingModals from "@/modules/chat/components/modals/ProjectRatingModals.vue";
+import ModalWrapper from "@/modules/chat/components/modals/ModalWrapper.vue";
 
 export default {
-  components: {ModalWrapper, ProjectRatingModals, Parameters, Contacts, NewGroup, ChatNavigation, ChatCatalog, Chat},
+  components: {ModalWrapper, ChatNavigation, ChatCatalog, Chat, ProjectRatingModals},
   methods: {
     ...mapMutations('chat', ['handleShowMenu', 'handleClosedProjectModalStatus']),
     checkMenuClick(e) {

@@ -32,13 +32,13 @@
 
 <script>
 import InputDropdown from '@/components/ui/InputDropdown.vue'
-import ProjectRatingModals from '@/components/templates/modals/ProjectRatingModals.vue'
-import ChatCongratiulationsAlert from '@/components/templates/chat-page/alerts/ChatCongratiulationsAlert.vue'
-import Debate from '@/components/templates/chat-page/chat/debate/Debate.vue'
-import DebateMessage from '@/components/templates/chat-page/chat/messages/DebateMessage.vue'
+import ProjectRatingModals from '@/modules/chat/components/modals/ProjectRatingModals.vue'
+import ChatCongratiulationsAlert from '@/modules/chat/components/alerts/ChatCongratiulationsAlert.vue'
+import Debate from '@/modules/chat/components/messages/message-input/Debate.vue'
+import DebateMessage from '@/modules/chat/components/messages/messages/DebateMessage.vue'
 import { mapGetters, mapMutations } from 'vuex'
-import ModalWrapper from '@/components/templates/modals/ModalWrapper.vue'
-import TiptapEditor from '@/components/templates/tiptap-editor/TiptapEditor.vue'
+import ModalWrapper from '@/modules/chat/components/modals/ModalWrapper.vue'
+import TiptapEditor from '@/modules/chat/components/tiptap-editor/TiptapEditor.vue'
 
 export default {
   components: {
